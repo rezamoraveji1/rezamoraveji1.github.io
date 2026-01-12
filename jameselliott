@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>James Elliott | Verizon</title>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial;
+      margin: 0;
+      background: #0b0b0c;
+      color: #ffffff;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #141416;
+      border: 1px solid #222;
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 0 0 10px;
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: #cfcfcf;
+      line-height: 1.4;
+    }
+
+    .vid {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #222;
+      margin-bottom: 18px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+    }
+
+    a.step {
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 14px;
+      display: block;
+      font-weight: 800;
+      background: #ffffff;
+      color: #000000;
+      text-align: center;
+    }
+
+    a.step.secondary {
+      background: linear-gradient(135deg, #1f1f22, #2a2a2e);
+      color: #ffffff;
+      border: 2px solid #ffffff;
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .tiny {
+      font-size: 12px;
+      color: #a9a9a9;
+      margin-top: 4px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+
+      <!-- STEP 1 -->
+      <h1>Step 1: Watch how it works</h1>
+      <p>Quick demo → check your address → book a time.</p>
+
+      <div class="vid">
+        <iframe
+          width="100%"
+          height="380"
+          src="https://www.youtube.com/embed/aYcTolNgWJs?rel=0&modestbranding=1&playsinline=1"
+          title="Quick Demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- STEP 2 + STEP 3 -->
+      <div class="steps">
+
+        <a
+          class="step"
+          href="https://www.verizon.com/home/internet/5g/"
+          target="_blank"
+          rel="noopener">
+          Step 2: Verify your address
+        </a>
+
+        <div class="tiny">
+          After checking your address, return to this tab to book your appointment.
+        </div>
+
+        <a
+          class="step secondary"
+          href="https://calendar.app.google/DWmUTvbV9AJmZuLGA"
+          target="_blank"
+          rel="noopener">
+          📅 Step 3: Schedule an appointment
+        </a>
+
+      </div>
+
+      <div class="tiny" style="margin-top:16px;">
+        This takes less than a minute from start to finish.
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
