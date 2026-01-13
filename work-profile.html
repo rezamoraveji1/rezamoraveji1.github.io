@@ -8,27 +8,26 @@
   <style>
     body{
       margin:0;
-      padding:22px 16px;
+      padding:24px 16px;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       text-align:center;
       color:#111;
 
-      /* Verizon-inspired red + yellow */
-      background:
-        radial-gradient(900px 600px at 20% 10%, rgba(255,215,0,.55), transparent 60%),
-        radial-gradient(900px 600px at 80% 0%, rgba(229,0,0,.35), transparent 55%),
-        linear-gradient(135deg, #e50000 0%, #ffcc00 100%);
+      /* ✅ OUTSIDE = Verizon Red */
+      background:#e50000;
     }
 
     .card{
       max-width:420px;
       margin:auto;
-      background:rgba(255,255,255,.92);
-      border-radius:18px;
+
+      /* ✅ INSIDE = Verizon Yellow */
+      background:#ffcc00;
+
+      border-radius:20px;
       padding:22px 18px 18px;
-      box-shadow:0 14px 40px rgba(0,0,0,.22);
-      border:1px solid rgba(0,0,0,.06);
-      backdrop-filter: blur(6px);
+      box-shadow:0 14px 40px rgba(0,0,0,.25);
+      border:1px solid rgba(0,0,0,.12);
     }
 
     .top{
@@ -36,7 +35,7 @@
       align-items:center;
       gap:14px;
       justify-content:center;
-      margin-bottom:14px;
+      margin-bottom:16px;
       text-align:left;
     }
 
@@ -45,7 +44,7 @@
       height:64px;
       border-radius:16px;
       object-fit:cover;
-      border:2px solid rgba(0,0,0,.08);
+      border:2px solid rgba(0,0,0,.15);
       background:#fff;
     }
 
@@ -54,11 +53,12 @@
       font-size:22px;
       line-height:1.1;
       letter-spacing:.2px;
+      color:#111;
     }
 
     p{
       margin:4px 0 0;
-      color:#333;
+      color:#222;
       font-size:14px;
     }
 
@@ -74,28 +74,30 @@
       text-decoration:none;
       font-weight:650;
       font-size:16px;
-      border:1px solid rgba(0,0,0,.10);
-      box-shadow:0 10px 22px rgba(0,0,0,.12);
+      border:1px solid rgba(0,0,0,.15);
+      box-shadow:0 8px 18px rgba(0,0,0,.18);
       user-select:none;
     }
 
+    /* Primary action: Save Contact */
     .primary{
       background:#000;
       color:#fff;
     }
 
+    /* Secondary actions */
     .secondary{
-      background:#f2f2f4;
+      background:#fff3b0; /* soft yellow */
       color:#111;
     }
 
     .btn:active{ transform:scale(.99); }
 
     .meta{
-      margin-top:10px;
+      margin-top:12px;
       font-size:12px;
-      color:#444;
-      opacity:.85;
+      color:#333;
+      opacity:.9;
     }
   </style>
 </head>
@@ -112,11 +114,11 @@
 
     <a class="btn primary" href="RezaMoraveji-Work.vcf">📇 Save Work Contact</a>
 
-    <a class="btn secondary" href="tel:+17733323109">📞 Call Work</a>
-    <a class="btn secondary" href="mailto:reza.moraveji@verizonwireless.com">✉️ Email Work</a>
+    <a class="btn secondary" href="tel:+17733323109">📞 Call</a>
+    <a class="btn secondary" href="mailto:reza.moraveji@verizonwireless.com">✉️ Email</a>
     <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
 
-    <div class="meta">Tap “Save Work Contact” to add me to your contacts.</div>
+    <div class="meta">Tap “Save Contact” to add me to your contacts.</div>
   </div>
 </body>
 </html>
