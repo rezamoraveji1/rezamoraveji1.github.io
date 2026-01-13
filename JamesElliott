@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Elliott;James;;;
+FN:James Elliott
+ORG:Verizon
+TITLE:Client Executive
+TEL;TYPE=CELL:+19372036689
+EMAIL:james.elliott@verizonwireless.com
+ADR;TYPE=WORK:;;;Dayton/Cincinnati;;;
+END:VCARD
