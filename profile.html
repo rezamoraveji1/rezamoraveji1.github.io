@@ -42,17 +42,19 @@
       overflow:hidden;
     }
 
-    /* ✅ UPDATED HEADER LAYOUT (photo top-left, name/title aligned) */
+    /* ✅ HEADER: match your screenshot spacing */
     header{
-      display:grid;
-      grid-template-columns:auto 1fr;
-      gap:16px;
       padding:20px;
-      align-items:center;
+      display:grid;
+      gap:14px;
     }
-    .header-main{
-      display:flex;
-      flex-direction:column;
+
+    /* Top row: avatar left, name/title truly centered, spacer right */
+    .header-top{
+      display:grid;
+      grid-template-columns:86px 1fr 86px; /* avatar / center / spacer */
+      align-items:center;
+      column-gap:14px;
     }
 
     .avatar{
@@ -61,31 +63,83 @@
       border-radius:18px;
       object-fit:cover;
       border:1px solid var(--border);
-      margin-top:2px; /* subtle alignment polish */
+    }
+
+    .header-main{
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .header-spacer{
+      width:86px; /* keeps center truly centered */
+      height:86px;
+      visibility:hidden;
     }
 
     h1{margin:0; font-size:22px}
-
     .subtitle{margin-top:4px; color:var(--muted); font-size:14px}
 
-    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    /* Center pills with controlled width so they don't feel "floaty" */
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:center;
+      max-width:520px;
+      margin:0 auto;
+    }
     .pill{
-      font-size:12px; color:var(--muted);
-      padding:6px 10px; border-radius:999px;
+      font-size:12px;
+      color:var(--muted);
+      padding:6px 10px;
+      border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.03);
     }
 
-    .btnrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    /* Buttons: centered column on mobile like your screenshot */
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      max-width:520px;
+      margin:2px auto 0;
+    }
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:11px 14px; border-radius:12px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 14px;
+      border-radius:12px;
       border:1px solid var(--border);
       background:rgba(122,167,255,.15);
-      text-decoration:none; font-weight:600; font-size:14px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      min-height:44px;
     }
     .btn.secondary{background:rgba(255,255,255,.04)}
     .btn:hover{transform:translateY(-1px)}
+
+    /* ✅ Mobile: stack buttons to match your “clean column” look */
+    @media (max-width: 520px){
+      .btnrow{
+        display:grid;
+        grid-template-columns:1fr 1fr; /* Email + LinkedIn side by side */
+        gap:10px;
+      }
+      .btnrow .btn{
+        width:100%;
+      }
+      /* Make top two buttons full width like your screenshot */
+      .btnrow .btn.primary-wide{ grid-column: 1 / -1; }
+      .btnrow .btn.contact-wide{ grid-column: 1 / -1; }
+    }
 
     .hr{height:1px; background:var(--border); margin:0 20px}
 
@@ -97,11 +151,6 @@
     }
     @media (max-width: 860px){
       .grid{grid-template-columns:1fr}
-    }
-
-    /* ✅ Mobile header stacks cleanly */
-    @media (max-width: 640px){
-      header{grid-template-columns:1fr}
     }
 
     section{
@@ -124,7 +173,8 @@
 
     .kpi{display:flex; gap:10px; flex-wrap:wrap}
     .kpi .box{
-      flex:1; min-width:170px;
+      flex:1;
+      min-width:170px;
       padding:12px;
       border-radius:14px;
       border:1px solid var(--border);
@@ -137,6 +187,7 @@
       padding:8px 20px 12px;
       color:var(--muted);
       font-size:12px;
+      text-align:center;
     }
   </style>
 </head>
@@ -146,17 +197,20 @@
     <div class="card">
 
       <header>
-        <!-- Profile photo (top-left) -->
-        <img class="avatar" src="profile.jpg" alt="Reza Moraveji headshot" />
+        <!-- ✅ Top: avatar left, name/title centered -->
+        <div class="header-top">
+          <img class="avatar" src="profile.jpg" alt="Reza Moraveji headshot" />
 
-        <!-- Name + title aligned to the right of photo -->
-        <div class="header-main">
-          <h1>Reza Moraveji</h1>
-          <div class="subtitle">Associate Director • Verizon (Enhanced Communities)</div>
+          <div class="header-main">
+            <h1>Reza Moraveji</h1>
+            <div class="subtitle">Associate Director • Verizon (Enhanced Communities)</div>
+          </div>
+
+          <div class="header-spacer" aria-hidden="true"></div>
         </div>
 
-        <!-- Pills full-width below -->
-        <div class="pillrow" style="grid-column:1 / -1;">
+        <!-- Pills (centered block like screenshot) -->
+        <div class="pillrow">
           <span class="pill">Hands-on</span>
           <span class="pill">Data-driven</span>
           <span class="pill">Team Development</span>
@@ -164,12 +218,13 @@
           <span class="pill">CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus</span>
         </div>
 
-        <!-- Buttons full-width below pills -->
-        <div class="btnrow" style="grid-column:1 / -1;">
-          <a class="btn" href="Reza-Moraveji-Resume.pdf" target="_blank" rel="noopener">📄 View Resume</a>
-          <a class="btn secondary" href="RezaMoraveji-Personal.vcf" target="_blank" rel="noopener">📇 Save My Contact</a>
+        <!-- Buttons (mobile stacks cleanly) -->
+        <div class="btnrow">
+          <a class="btn primary-wide" href="Reza-Moraveji-Resume.pdf" target="_blank" rel="noopener">📄 View Resume</a>
+          <a class="btn secondary contact-wide" href="RezaMoraveji-Personal.vcf" target="_blank" rel="noopener">📇 Save My Contact</a>
           <a class="btn secondary" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
           <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          <a class="btn secondary primary-wide" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank" rel="noopener">📅 Schedule Time</a>
         </div>
       </header>
 
@@ -180,12 +235,12 @@
           <h2>Brief Bio</h2>
           <p>
             I’m an Associate Director at Verizon leading teams within the Enhanced Communities channel.
-            My leadership style is hands-on and metrics-driven, focused on building accountability,
-            clarity, and consistent execution.
+            My leadership style is hands-on and metrics-driven, focused on accountability, clarity,
+            and consistent execution.
           </p>
           <p class="muted">
-            I specialize in developing talent, aligning incentives with behavior, and creating operating
-            rhythms that scale performance.
+            I specialize in developing talent, aligning incentives with behavior, and building
+            operating rhythms that scale performance.
           </p>
 
           <h2 style="margin-top:14px;">DISC Management Style</h2>
@@ -218,6 +273,7 @@
             <li><a href="Reza-Moraveji-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></li>
             <li><a href="RezaMoraveji-Personal.vcf" target="_blank" rel="noopener">Save My Contact</a></li>
             <li><a href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">LinkedIn Profile</a></li>
+            <li><a href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank" rel="noopener">Schedule Time</a></li>
           </ul>
         </section>
       </div>
@@ -229,3 +285,4 @@
     </div>
   </div>
 </body>
+</html>
