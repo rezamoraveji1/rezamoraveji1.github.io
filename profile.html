@@ -31,7 +31,9 @@
       line-height:1.5;
     }
     a{color:inherit}
+
     .wrap{max-width:960px; margin:0 auto; padding:12px}
+
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--border);
@@ -39,13 +41,33 @@
       box-shadow:0 14px 40px rgba(0,0,0,.35);
       overflow:hidden;
     }
-    header{display:flex; gap:18px; align-items:center; padding:20px}
-    .avatar{
-      width:86px; height:86px; border-radius:18px; object-fit:cover;
-      border:1px solid var(--border);
+
+    /* ✅ UPDATED HEADER LAYOUT (photo top-left, name/title aligned) */
+    header{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:16px;
+      padding:20px;
+      align-items:center;
     }
+    .header-main{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .avatar{
+      width:86px;
+      height:86px;
+      border-radius:18px;
+      object-fit:cover;
+      border:1px solid var(--border);
+      margin-top:2px; /* subtle alignment polish */
+    }
+
     h1{margin:0; font-size:22px}
+
     .subtitle{margin-top:4px; color:var(--muted); font-size:14px}
+
     .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
     .pill{
       font-size:12px; color:var(--muted);
@@ -75,6 +97,11 @@
     }
     @media (max-width: 860px){
       .grid{grid-template-columns:1fr}
+    }
+
+    /* ✅ Mobile header stacks cleanly */
+    @media (max-width: 640px){
+      header{grid-template-columns:1fr}
     }
 
     section{
@@ -119,26 +146,30 @@
     <div class="card">
 
       <header>
+        <!-- Profile photo (top-left) -->
         <img class="avatar" src="profile.jpg" alt="Reza Moraveji headshot" />
 
-        <div>
+        <!-- Name + title aligned to the right of photo -->
+        <div class="header-main">
           <h1>Reza Moraveji</h1>
           <div class="subtitle">Associate Director • Verizon (Enhanced Communities)</div>
+        </div>
 
-          <div class="pillrow">
-            <span class="pill">Hands-on</span>
-            <span class="pill">Data-driven</span>
-            <span class="pill">Team Development</span>
-            <span class="pill">High D / I (DISC)</span>
-            <span class="pill">CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus</span>
-          </div>
+        <!-- Pills full-width below -->
+        <div class="pillrow" style="grid-column:1 / -1;">
+          <span class="pill">Hands-on</span>
+          <span class="pill">Data-driven</span>
+          <span class="pill">Team Development</span>
+          <span class="pill">High D / I (DISC)</span>
+          <span class="pill">CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus</span>
+        </div>
 
-          <div class="btnrow">
-            <a class="btn" href="Reza-Moraveji-Resume.pdf" target="_blank" rel="noopener">📄 View Resume</a>
-            <a class="btn secondary" href="RezaMoraveji-Personal.vcf" target="_blank" rel="noopener">📇 Save My Contact</a>
-            <a class="btn secondary" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
-            <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
-          </div>
+        <!-- Buttons full-width below pills -->
+        <div class="btnrow" style="grid-column:1 / -1;">
+          <a class="btn" href="Reza-Moraveji-Resume.pdf" target="_blank" rel="noopener">📄 View Resume</a>
+          <a class="btn secondary" href="RezaMoraveji-Personal.vcf" target="_blank" rel="noopener">📇 Save My Contact</a>
+          <a class="btn secondary" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
         </div>
       </header>
 
@@ -179,7 +210,7 @@
           <ul class="list">
             <li><strong>MBA</strong> — Western Governors University</li>
             <li><strong>B.S.</strong> — Public Policy, Indiana University</li>
-            <li><strong>Certifications:</strong> Six Sigma Green Belt • Scrum Master • PMP (in progress)</li>
+            <li><strong>Certifications:</strong> Six Sigma Green Belt • PMP (in progress)</li>
           </ul>
 
           <h2 style="margin-top:14px;">Quick Links</h2>
@@ -198,4 +229,3 @@
     </div>
   </div>
 </body>
-</html>
