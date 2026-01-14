@@ -8,15 +8,15 @@
 
   <meta property="og:title" content="Reza Moraveji — Leadership Portfolio" />
   <meta property="og:description" content="Resume • Bio • Strengths • Education • Leadership Style" />
-  <meta property="og:image" content="assets/images/profile.jpg" />
+  <meta property="og:image" content="/assets/images/profile.jpg" />
 
   <style>
     :root{
-      --bg:#0b0f19;          /* SOLID background */
-      --card:#101a2f;        /* SOLID card */
-      --panel:#0f172a;       /* SOLID sections */
-      --chip:#0b1324;        /* SOLID chips/buttons */
-      --btn:#162a55;         /* SOLID primary button */
+      --bg:#0b0f19;
+      --card:#101a2f;
+      --panel:#0f172a;
+      --chip:#0b1324;
+      --btn:#162a55;
       --text:#e9eefc;
       --muted:#b9c4e2;
       --border:rgba(255,255,255,.12);
@@ -26,7 +26,7 @@
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
-      background:var(--bg); /* ✅ no gradients */
+      background:var(--bg);
       color:var(--text);
       line-height:1.5;
     }
@@ -38,7 +38,7 @@
       border:1px solid var(--border);
       border-radius:22px;
       overflow:hidden;
-      box-shadow:0 14px 34px rgba(0,0,0,.55); /* darker shadow, no “white haze” */
+      box-shadow:0 14px 34px rgba(0,0,0,.55);
     }
 
     header{padding:20px;display:grid;gap:14px}
@@ -102,6 +102,7 @@
       font-size:14px;
       min-height:46px;
       user-select:none;
+      cursor:pointer;
     }
     .btn.primary{
       background:var(--btn);
@@ -197,6 +198,15 @@
       background:var(--card);
       border-top:1px solid var(--border);
     }
+
+    /* tiny status text for vCard */
+    .tiny{
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      margin-top:6px;
+      min-height:16px;
+    }
   </style>
 </head>
 
@@ -206,7 +216,8 @@
 
       <header>
         <div class="header-top">
-          <img class="avatar" src="assets/images/profile.jpg?v=3" alt="Reza Moraveji headshot" loading="eager" decoding="async" />
+          <!-- ✅ ROOT-relative paths (works even if page is /pages/index.html) -->
+          <img class="avatar" src="/assets/images/profile.jpg?v=7" alt="Reza Moraveji headshot" loading="eager" decoding="async" />
 
           <div class="header-main">
             <h1>Reza Moraveji</h1>
@@ -214,7 +225,7 @@
             <div class="credline">MBA • Six Sigma Green Belt • Scrum Master</div>
           </div>
 
-          <img class="dogs" src="assets/images/Dogs.jpg?v=3" alt="Cyrus & Simba" loading="lazy" decoding="async" />
+          <img class="dogs" src="/assets/images/Dogs.jpg?v=7" alt="Cyrus & Simba" loading="lazy" decoding="async" />
         </div>
 
         <div class="pillrow">
@@ -226,16 +237,18 @@
         </div>
 
         <div class="btnrow">
-          <a class="btn primary full" href="assets/images/Reza-Moraveji-Resume.pdf?v=3" target="_blank" rel="noopener">📄 View Resume</a>
+          <a class="btn primary full" href="/assets/images/Reza-Moraveji-Resume.pdf?v=7" target="_blank" rel="noopener">📄 View Resume</a>
 
-          <!-- ✅ Correct path to your Personal VCF -->
-          <a class="btn full" href="assets/vcf/RezaMoraveji-Personal.vcf?v=3">📇 Save My Contact</a>
+          <!-- ✅ Better iPhone support: fetch vcf and download as text/vcard -->
+          <button class="btn full" id="saveContactBtn">📇 Save My Contact</button>
 
           <a class="btn" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
           <a class="btn" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
 
           <a class="btn full" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank" rel="noopener">📅 Schedule Time</a>
         </div>
+
+        <div class="tiny" id="vcfStatus"></div>
       </header>
 
       <div class="hr"></div>
@@ -273,11 +286,11 @@
             <span class="skill">Team Development</span>
           </div>
 
-          <h2 style="margin-top:14px;">Personal</h2>
+          <h2 style="margin-top:14px;">Human</h2>
           <ul class="list">
             <li><strong>Dog dad:</strong> Cyrus (Standard Poodle) & Simba (Goldendoodle)</li>
             <li><strong>Sports:</strong> Ohio State football • Colts fan</li>
-            <li><strong>Books:</strong> The Morning Miracle • Good to Great • Dare to Lead • The First 90 Days • Extreme Ownership</li>
+            <li><strong>Books:</strong> The Miracle Morning • Good to Great • Dare to Lead • The First 90 Days • Extreme Ownership</li>
           </ul>
         </section>
 
@@ -294,7 +307,7 @@
           <h2 style="margin-top:14px;">Education & Credentials</h2>
           <div class="edu-grid">
             <div class="edu-card">
-              <img class="edu-img" src="assets/images/Indiana-University.jpg?v=3" alt="Indiana University Degree" loading="lazy" decoding="async" />
+              <img class="edu-img" src="/assets/images/Indiana-University.jpg?v=7" alt="Indiana University Degree" loading="lazy" decoding="async" />
               <div class="edu-body">
                 <p class="edu-title">Indiana University</p>
                 <p class="edu-meta">B.S. — Public Policy</p>
@@ -302,7 +315,7 @@
             </div>
 
             <div class="edu-card">
-              <img class="edu-img" src="assets/images/Western-Governors.jpg?v=3" alt="Western Governors University MBA" loading="lazy" decoding="async" />
+              <img class="edu-img" src="/assets/images/Western-Governors.jpg?v=7" alt="Western Governors University MBA" loading="lazy" decoding="async" />
               <div class="edu-body">
                 <p class="edu-title">Western Governors University</p>
                 <p class="edu-meta">MBA</p>
@@ -310,7 +323,7 @@
             </div>
 
             <div class="edu-card">
-              <img class="edu-img" src="assets/images/Six-Sigma-Green-Belt.jpg?v=3" alt="Six Sigma Green Belt" loading="lazy" decoding="async" />
+              <img class="edu-img" src="/assets/images/Six-Sigma-Green-Belt.jpg?v=7" alt="Six Sigma Green Belt" loading="lazy" decoding="async" />
               <div class="edu-body">
                 <p class="edu-title">Six Sigma Green Belt</p>
                 <p class="edu-meta">Certificate</p>
@@ -333,5 +346,38 @@
 
     </div>
   </div>
+
+  <script>
+    // ✅ iPhone-friendly vCard save: fetch your .vcf and re-serve as text/vcard
+    const vcfUrl = "/assets/vcf/RezaMoraveji-Personal.vcf?v=7";
+    const btn = document.getElementById("saveContactBtn");
+    const statusEl = document.getElementById("vcfStatus");
+
+    btn.addEventListener("click", async () => {
+      statusEl.textContent = "Preparing contact…";
+      try {
+        const res = await fetch(vcfUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error("Could not load vCard (check file path).");
+
+        const text = await res.text();
+        const blob = new Blob([text], { type: "text/vcard;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "RezaMoraveji-Personal.vcf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+        statusEl.textContent = "If prompted, choose “Add to Contacts”.";
+      } catch (e) {
+        // fallback: open the .vcf directly
+        statusEl.textContent = "Opening contact file…";
+        window.location.href = vcfUrl;
+      }
+    });
+  </script>
 </body>
 </html>
