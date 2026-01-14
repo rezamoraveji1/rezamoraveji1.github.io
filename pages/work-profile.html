@@ -2,32 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Reza Moraveji — Work Contact</title>
+  <title>Reza Moraveji — Contact</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta property="og:title" content="Reza Moraveji — Contact" />
+  <meta property="og:image" content="/assets/images/profile.jpg" />
 
   <style>
     body{
       margin:0;
-      padding:24px 16px;
+      padding:22px 16px;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      text-align:center;
+      background:#0b0f19;
       color:#111;
-
-      /* ✅ OUTSIDE = Verizon Red */
-      background:#e50000;
+      text-align:center;
     }
 
     .card{
       max-width:420px;
       margin:auto;
-
-      /* ✅ INSIDE = Verizon Yellow */
-      background:#ffcc00;
-
+      background:#f7f7f8;
       border-radius:20px;
       padding:22px 18px 18px;
-      box-shadow:0 14px 40px rgba(0,0,0,.25);
-      border:1px solid rgba(0,0,0,.12);
+      box-shadow:0 18px 40px rgba(0,0,0,.45);
     }
 
     .top{
@@ -35,7 +32,7 @@
       align-items:center;
       gap:14px;
       justify-content:center;
-      margin-bottom:16px;
+      margin-bottom:14px;
       text-align:left;
     }
 
@@ -44,22 +41,20 @@
       height:64px;
       border-radius:16px;
       object-fit:cover;
-      border:2px solid rgba(0,0,0,.15);
-      background:#fff;
+      background:#ddd;
     }
 
     h1{
       margin:0;
       font-size:22px;
       line-height:1.1;
-      letter-spacing:.2px;
-      color:#111;
+      color:#000;
     }
 
     p{
       margin:4px 0 0;
-      color:#222;
       font-size:14px;
+      color:#444;
     }
 
     .btn{
@@ -71,33 +66,27 @@
       margin:10px 0;
       padding:14px;
       border-radius:14px;
-      text-decoration:none;
-      font-weight:650;
+      font-weight:700;
       font-size:16px;
-      border:1px solid rgba(0,0,0,.15);
-      box-shadow:0 8px 18px rgba(0,0,0,.18);
-      user-select:none;
+      text-decoration:none;
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow:0 8px 18px rgba(0,0,0,.15);
     }
 
-    /* Primary action: Save Contact */
     .primary{
       background:#000;
       color:#fff;
     }
 
-    /* Secondary actions */
     .secondary{
-      background:#fff3b0; /* soft yellow */
+      background:#fff;
       color:#111;
     }
 
-    .btn:active{ transform:scale(.99); }
-
     .meta{
-      margin-top:12px;
+      margin-top:10px;
       font-size:12px;
-      color:#333;
-      opacity:.9;
+      color:#555;
     }
   </style>
 </head>
@@ -105,20 +94,41 @@
 <body>
   <div class="card">
     <div class="top">
-      <img class="avatar" src="profile.jpg" alt="Reza Moraveji" />
+      <img
+        class="avatar"
+        src="/assets/images/profile.jpg"
+        alt="Reza Moraveji"
+        loading="eager"
+      />
       <div>
         <h1>Reza Moraveji</h1>
         <p>Associate Director · Verizon</p>
       </div>
     </div>
 
-    <a class="btn primary" href="RezaMoraveji.vcf">📇 Save Contact</a>
+    <!-- ✅ WORK vCard -->
+    <a class="btn primary" href="/assets/vcf/RezaMoraveji.vcf">
+      📇 Save Contact
+    </a>
 
-    <a class="btn secondary" href="tel:+17733323109">📞 Call</a>
-    <a class="btn secondary" href="mailto:reza.moraveji@verizonwireless.com">✉️ Email</a>
-    <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+    <!-- ✅ WORK phone -->
+    <a class="btn secondary" href="tel:+17733323109">
+      📞 Call
+    </a>
 
-    <div class="meta">Tap “Save Contact” to add me to your contacts.</div>
+    <!-- ✅ WORK email -->
+    <a class="btn secondary" href="mailto:reza.moraveji@verizonwireless.com">
+      ✉️ Email
+    </a>
+
+    <!-- LinkedIn -->
+    <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank">
+      🔗 LinkedIn
+    </a>
+
+    <div class="meta">
+      Tap “Save Contact” to add me to your contacts.
+    </div>
   </div>
 </body>
 </html>
