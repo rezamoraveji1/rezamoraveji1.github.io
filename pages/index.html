@@ -12,14 +12,16 @@
 
   <style>
     :root{
-      --bg:#0b0f19;
-      --card:#101a2f;
-      --panel:#0f172a;
-      --chip:#0b1324;
-      --btn:#162a55;
-      --text:#e9eefc;
-      --muted:#b9c4e2;
-      --border:rgba(255,255,255,.12);
+      /* 🔴 SOLID RED THEME (same scheme, red instead of blue) */
+      --bg:#140506;          /* page background */
+      --card:#1f090c;        /* main card */
+      --panel:#1a070a;       /* inner sections */
+      --chip:#140506;        /* pills / chips */
+      --btn:#6b1218;         /* primary button */
+
+      --text:#f3e9ea;
+      --muted:#d8b6b9;
+      --border:rgba(255,255,255,.14);
     }
 
     *{box-sizing:border-box}
@@ -57,7 +59,7 @@
       border-radius:22px;
       object-fit:cover;
       border:1px solid var(--border);
-      background:#070d1b;
+      background:#090304;
     }
 
     .header-main{
@@ -110,8 +112,8 @@
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:10px;
-      width:100%;            /* ✅ full width now */
-      margin:0;              /* ✅ remove old left bias */
+      width:100%;
+      margin:0;
     }
     .btn{
       display:flex;align-items:center;justify-content:center;
@@ -128,7 +130,7 @@
     }
     .btn.primary{
       background:var(--btn);
-      border-color:rgba(122,167,255,.35);
+      border-color:rgba(255,120,120,.45);
     }
     .full{grid-column:1/-1}
 
@@ -218,7 +220,7 @@
       height:170px;
       object-fit:cover;
       display:block;
-      background:#070d1b;
+      background:#090304;
     }
     .edu-body{padding:12px}
     .edu-title{font-weight:850;font-size:14px;margin:0 0 4px}
@@ -236,7 +238,7 @@
       height:200px;
       object-fit:cover;
       display:block;
-      background:#070d1b;
+      background:#090304;
     }
     .human-dogs .cap{
       padding:10px 12px;
@@ -294,7 +296,7 @@
               <a class="btn" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
               <a class="btn" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
 
-              <a class="btn full" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank" rel="noopener">📅 Schedule Time</a>
+              <a class="btn primary full" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank" rel="noopener">📅 Schedule Time</a>
             </div>
 
             <div class="tiny" id="vcfStatus"></div>
