@@ -12,46 +12,42 @@
 
   <style>
     :root{
-      --bg:#0b0f19;
-      --card:#121a2b;
+      --bg:#0b0f19;          /* SOLID background */
+      --card:#101a2f;        /* SOLID card */
+      --panel:#0f172a;       /* SOLID sections */
+      --chip:#0b1324;        /* SOLID chips/buttons */
+      --btn:#162a55;         /* SOLID primary button */
       --text:#e9eefc;
       --muted:#b9c4e2;
-      --accent:#7aa7ff;
-      --border:rgba(255,255,255,.10);
+      --border:rgba(255,255,255,.12);
     }
 
     *{box-sizing:border-box}
-
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
-      background:
-        radial-gradient(1200px 800px at 20% 0%, rgba(122,167,255,.18), transparent 60%),
-        radial-gradient(1000px 700px at 90% 10%, rgba(140,255,210,.10), transparent 55%),
-        var(--bg);
+      background:var(--bg); /* ✅ no gradients */
       color:var(--text);
       line-height:1.5;
     }
-
     a{color:inherit;text-decoration:none}
 
-    .wrap{max-width:960px;margin:0 auto;padding:24px}
-
+    .wrap{max-width:980px;margin:0 auto;padding:18px}
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background:var(--card);
       border:1px solid var(--border);
-      border-radius:18px;
-      box-shadow:0 14px 40px rgba(0,0,0,.35);
+      border-radius:22px;
       overflow:hidden;
+      box-shadow:0 14px 34px rgba(0,0,0,.55); /* darker shadow, no “white haze” */
     }
 
-    header{padding:22px;display:grid;gap:14px}
+    header{padding:20px;display:grid;gap:14px}
 
     .header-top{
       display:grid;
       grid-template-columns:86px 1fr 86px;
       align-items:center;
-      gap:18px;
+      gap:14px;
     }
 
     .avatar,.dogs{
@@ -59,167 +55,283 @@
       border-radius:18px;
       object-fit:cover;
       border:1px solid var(--border);
+      background:#070d1b;
+      display:block;
     }
 
     .header-main{text-align:center}
-    h1{margin:0;font-size:22px}
-    .subtitle{margin-top:4px;color:var(--muted);font-size:14px}
+    h1{margin:0;font-size:24px;line-height:1.15}
+    .subtitle{margin-top:6px;color:var(--muted);font-size:14px}
     .credline{
-      margin-top:4px;
+      margin-top:6px;
       font-size:12px;
       color:var(--muted);
       text-transform:uppercase;
-      letter-spacing:.08em;
+      letter-spacing:.10em;
     }
 
     .pillrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
+      display:flex;flex-wrap:wrap;gap:8px;
       justify-content:center;
-      margin-top:8px;
+      margin-top:6px;
     }
-
     .pill{
       font-size:12px;
-      padding:6px 10px;
+      padding:7px 10px;
       border-radius:999px;
       border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
+      background:var(--chip);
       color:var(--muted);
     }
 
     .btnrow{
-      display:flex;
-      flex-wrap:wrap;
+      display:grid;
+      grid-template-columns:1fr 1fr;
       gap:10px;
-      justify-content:center;
-      margin-top:10px;
+      max-width:720px;
+      margin:8px auto 0;
     }
-
     .btn{
-      padding:11px 14px;
-      border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
       border:1px solid var(--border);
-      background:rgba(122,167,255,.15);
-      font-weight:600;
+      background:var(--chip);
+      font-weight:750;
       font-size:14px;
+      min-height:46px;
+      user-select:none;
     }
+    .btn.primary{
+      background:var(--btn);
+      border-color:rgba(122,167,255,.35);
+    }
+    .full{grid-column:1/-1}
 
-    .btn.secondary{background:rgba(255,255,255,.04)}
-
-    .hr{height:1px;background:var(--border);margin:0 22px}
+    .hr{height:1px;background:var(--border);margin:0 20px}
 
     .grid{
       display:grid;
       grid-template-columns:1.15fr .85fr;
       gap:14px;
-      padding:22px;
+      padding:18px 20px 20px;
     }
-
-    @media(max-width:860px){
-      .grid{grid-template-columns:1fr}
-    }
+    @media (max-width:860px){ .grid{grid-template-columns:1fr} }
 
     section{
       padding:16px;
       border:1px solid var(--border);
       border-radius:16px;
-      background:rgba(0,0,0,.12);
+      background:var(--panel);
     }
-
     section h2{
       margin:0 0 10px;
-      font-size:14px;
-      letter-spacing:.08em;
+      font-size:13px;
+      letter-spacing:.12em;
       text-transform:uppercase;
       color:var(--muted);
     }
 
+    p{margin:0 0 10px}
+    .muted{color:var(--muted)}
     .list{margin:0;padding-left:18px}
     .list li{margin:6px 0}
 
-    .kpi{display:flex;flex-wrap:wrap;gap:10px}
+    .kpi{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    @media(max-width:520px){ .kpi{grid-template-columns:1fr} }
     .box{
-      flex:1;min-width:160px;
       padding:12px;
       border-radius:14px;
       border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
+      background:var(--chip);
+    }
+    .label{font-size:12px;color:var(--muted)}
+    .value{font-size:14px;font-weight:850;margin-top:4px}
+
+    .skills{
+      display:flex;flex-wrap:wrap;gap:8px;margin-top:8px
+    }
+    .skill{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--chip);
+      color:var(--text);
     }
 
-    footer{text-align:center;color:var(--muted);font-size:12px;padding:16px}
+    .edu-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+    @media(min-width:540px){ .edu-grid{grid-template-columns:1fr 1fr} }
+
+    .edu-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      background:var(--chip);
+    }
+    .edu-img{
+      width:100%;
+      height:170px;
+      object-fit:cover;
+      display:block;
+      background:#070d1b;
+    }
+    .edu-body{padding:12px}
+    .edu-title{font-weight:850;font-size:14px;margin:0 0 4px}
+    .edu-meta{font-size:12px;color:var(--muted);margin:0}
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      padding:14px 20px 16px;
+      background:var(--card);
+      border-top:1px solid var(--border);
+    }
   </style>
 </head>
 
 <body>
-<div class="wrap">
-<div class="card">
+  <div class="wrap">
+    <div class="card">
 
-<header>
-  <div class="header-top">
-    <img class="avatar" src="assets/images/profile.jpg" alt="Reza Moraveji">
-    <div class="header-main">
-      <h1>Reza Moraveji</h1>
-      <div class="subtitle">Associate Director • Verizon (Enhanced Communities)</div>
-      <div class="credline">MBA • Six Sigma Green Belt • Scrum Master</div>
+      <header>
+        <div class="header-top">
+          <img class="avatar" src="assets/images/profile.jpg?v=3" alt="Reza Moraveji headshot" loading="eager" decoding="async" />
+
+          <div class="header-main">
+            <h1>Reza Moraveji</h1>
+            <div class="subtitle">Associate Director • Verizon (Enhanced Communities)</div>
+            <div class="credline">MBA • Six Sigma Green Belt • Scrum Master</div>
+          </div>
+
+          <img class="dogs" src="assets/images/Dogs.jpg?v=3" alt="Cyrus & Simba" loading="lazy" decoding="async" />
+        </div>
+
+        <div class="pillrow">
+          <span class="pill">Hands-on</span>
+          <span class="pill">Data-driven</span>
+          <span class="pill">Team Development</span>
+          <span class="pill">High D / I (DISC)</span>
+          <span class="pill">CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus</span>
+        </div>
+
+        <div class="btnrow">
+          <a class="btn primary full" href="assets/images/Reza-Moraveji-Resume.pdf?v=3" target="_blank" rel="noopener">📄 View Resume</a>
+
+          <!-- ✅ Correct path to your Personal VCF -->
+          <a class="btn full" href="assets/vcf/RezaMoraveji-Personal.vcf?v=3">📇 Save My Contact</a>
+
+          <a class="btn" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+
+          <a class="btn full" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank" rel="noopener">📅 Schedule Time</a>
+        </div>
+      </header>
+
+      <div class="hr"></div>
+
+      <div class="grid">
+        <section>
+          <h2>Brief Bio</h2>
+          <p>
+            I’m an Associate Director at Verizon leading teams within the Enhanced Communities channel.
+            My leadership style is hands-on and metrics-driven, focused on accountability, clarity,
+            and consistent execution.
+          </p>
+          <p class="muted">
+            I specialize in developing talent, aligning incentives with behavior, and building operating rhythms
+            that scale performance.
+          </p>
+
+          <h2 style="margin-top:14px;">DISC Management Style</h2>
+          <ul class="list">
+            <li><strong>High D:</strong> decisive, direct, ownership-driven</li>
+            <li><strong>High I:</strong> energizing, communicative, motivating</li>
+            <li><strong>How I lead:</strong> clear expectations + frequent feedback + visible scoreboards</li>
+          </ul>
+
+          <h2 style="margin-top:14px;">Skills</h2>
+          <div class="skills">
+            <span class="skill">Leadership & Coaching</span>
+            <span class="skill">Territory Performance</span>
+            <span class="skill">Partnership Strategy</span>
+            <span class="skill">Stakeholder Management</span>
+            <span class="skill">Sales Enablement</span>
+            <span class="skill">Process Improvement</span>
+            <span class="skill">Data-Driven Execution</span>
+            <span class="skill">Operating Rhythms</span>
+            <span class="skill">Team Development</span>
+          </div>
+
+          <h2 style="margin-top:14px;">Personal</h2>
+          <ul class="list">
+            <li><strong>Dog dad:</strong> Cyrus (Standard Poodle) & Simba (Goldendoodle)</li>
+            <li><strong>Sports:</strong> Ohio State football • Colts fan</li>
+            <li><strong>Books:</strong> The Miracle Morning • Good to Great • Dare to Lead • The First 90 Days • Extreme Ownership</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>CliftonStrengths</h2>
+          <div class="kpi">
+            <div class="box"><div class="label">Restorative</div><div class="value">Fix what’s broken fast</div></div>
+            <div class="box"><div class="label">Individualization</div><div class="value">Coach to each person</div></div>
+            <div class="box"><div class="label">Arranger</div><div class="value">Optimize moving parts</div></div>
+            <div class="box"><div class="label">Significance</div><div class="value">High standards</div></div>
+            <div class="box"><div class="label">Focus</div><div class="value">Relentless priorities</div></div>
+          </div>
+
+          <h2 style="margin-top:14px;">Education & Credentials</h2>
+          <div class="edu-grid">
+            <div class="edu-card">
+              <img class="edu-img" src="assets/images/Indiana-University.jpg?v=3" alt="Indiana University Degree" loading="lazy" decoding="async" />
+              <div class="edu-body">
+                <p class="edu-title">Indiana University</p>
+                <p class="edu-meta">B.S. — Public Policy</p>
+              </div>
+            </div>
+
+            <div class="edu-card">
+              <img class="edu-img" src="assets/images/Western-Governors.jpg?v=3" alt="Western Governors University MBA" loading="lazy" decoding="async" />
+              <div class="edu-body">
+                <p class="edu-title">Western Governors University</p>
+                <p class="edu-meta">MBA</p>
+              </div>
+            </div>
+
+            <div class="edu-card">
+              <img class="edu-img" src="assets/images/Six-Sigma-Green-Belt.jpg?v=3" alt="Six Sigma Green Belt" loading="lazy" decoding="async" />
+              <div class="edu-body">
+                <p class="edu-title">Six Sigma Green Belt</p>
+                <p class="edu-meta">Certificate</p>
+              </div>
+            </div>
+
+            <div class="edu-card">
+              <div class="edu-body">
+                <p class="edu-title">Scrum Master</p>
+                <p class="edu-meta">Credential on file (no image)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        NFC-ready profile • Update anytime without reprogramming
+      </footer>
+
     </div>
-    <img class="dogs" src="assets/images/Dogs.jpg" alt="Cyrus & Simba">
   </div>
-
-  <div class="pillrow">
-    <span class="pill">Hands-on</span>
-    <span class="pill">Data-driven</span>
-    <span class="pill">Team Development</span>
-    <span class="pill">High D / I (DISC)</span>
-    <span class="pill">CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus</span>
-  </div>
-
-  <div class="btnrow">
-    <a class="btn" href="assets/images/Reza-Moraveji-Resume.pdf" target="_blank">📄 Resume</a>
-    <a class="btn secondary" href="RezaMoraveji-Personal.vcf">📇 Save Contact</a>
-    <a class="btn secondary" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
-    <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank">🔗 LinkedIn</a>
-    <a class="btn secondary" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank">📅 Schedule Time</a>
-  </div>
-</header>
-
-<div class="hr"></div>
-
-<div class="grid">
-<section>
-  <h2>Brief Bio</h2>
-  <p>
-    I’m an Associate Director at Verizon leading teams within the Enhanced Communities channel.
-    My leadership style is hands-on and metrics-driven, focused on accountability, clarity,
-    and consistent execution.
-  </p>
-
-  <h2 style="margin-top:14px;">DISC Management Style</h2>
-  <ul class="list">
-    <li><strong>High D:</strong> decisive, ownership-driven</li>
-    <li><strong>High I:</strong> energizing, motivating</li>
-    <li><strong>Leadership:</strong> expectations + feedback + scorecards</li>
-  </ul>
-</section>
-
-<section>
-  <h2>CliftonStrengths</h2>
-  <div class="kpi">
-    <div class="box">Restorative</div>
-    <div class="box">Individualization</div>
-    <div class="box">Arranger</div>
-    <div class="box">Significance</div>
-    <div class="box">Focus</div>
-  </div>
-</section>
-</div>
-
-<footer>
-  NFC-ready profile • Update anytime without reprogramming
-</footer>
-
-</div>
-</div>
 </body>
 </html>
