@@ -1,317 +1,380 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reza Moraveji</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reza Moraveji — Leadership Portfolio</title>
+  <meta name="description" content="Reza Moraveji — Associate Director at Verizon | Leadership Portfolio" />
+
+  <meta property="og:title" content="Reza Moraveji — Leadership Portfolio" />
+  <meta property="og:description" content="Resume • Bio • Strengths • Education • Leadership Style" />
+  <meta property="og:image" content="/assets/images/profile.jpg" />
+
   <style>
     :root{
-      --bg1:#050815;
-      --bg2:#0a1a34;
-      --card:#0b1530cc;
-      --stroke:rgba(255,255,255,.12);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.68);
-      --muted2:rgba(255,255,255,.52);
-      --chip:rgba(255,255,255,.08);
-      --btn:rgba(255,255,255,.06);
-      --btn2:rgba(255,255,255,.09);
-      --accent:#2f7cf6;
-      --shadow: 0 18px 50px rgba(0,0,0,.45);
-      --radius:22px;
+      --bg:#0b0f19;
+      --card:#101a2f;
+      --panel:#0f172a;
+      --chip:#0b1324;
+      --btn:#162a55;
+      --text:#e9eefc;
+      --muted:#b9c4e2;
+      --border:rgba(255,255,255,.12);
     }
 
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+      background:var(--bg);
       color:var(--text);
-      background:
-        radial-gradient(800px 600px at 20% 10%, rgba(47,124,246,.28), transparent 55%),
-        radial-gradient(900px 700px at 80% 0%, rgba(120,80,255,.18), transparent 55%),
-        linear-gradient(160deg, var(--bg1), var(--bg2));
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding:28px 14px 48px;
+      line-height:1.5;
     }
+    a{color:inherit;text-decoration:none}
 
-    .wrap{
-      width:min(420px, 100%);
-    }
-
+    .wrap{max-width:980px;margin:0 auto;padding:18px}
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--stroke);
-      border-radius: 30px;
-      padding:20px 18px 22px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 14px 34px rgba(0,0,0,.55);
     }
 
-    /* HEADER (updated to match your request) */
-    .profile-header{
-      display:flex;
-      align-items:center;     /* aligns headshot + name/title block */
-      gap:18px;
-      padding:4px 2px 10px;
+    header{padding:20px;display:grid;gap:14px}
+
+    .header-top{
+      display:grid;
+      grid-template-columns:86px 1fr 86px;
+      align-items:center;
+      gap:14px;
     }
 
-    .profile-photo{
-      width:140px;            /* larger headshot */
-      height:140px;
+    .avatar,.dogs{
+      width:86px;height:86px;
       border-radius:18px;
       object-fit:cover;
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      flex-shrink:0;
+      border:1px solid var(--border);
+      background:#070d1b;
+      display:block;
     }
 
-    .profile-text h1{
-      margin:0;
-      font-size:30px;
-      letter-spacing:.2px;
-      line-height:1.08;
-    }
-
-    .profile-text .title{
-      margin:8px 0 10px;
-      font-size:14.5px;
+    .header-main{text-align:center}
+    h1{margin:0;font-size:24px;line-height:1.15}
+    .subtitle{margin-top:6px;color:var(--muted);font-size:14px}
+    .credline{
+      margin-top:6px;
+      font-size:12px;
       color:var(--muted);
-      line-height:1.35;
-    }
-
-    .credentials{
-      display:flex;           /* evenly spaced subtitles below title */
-      gap:12px;
-      flex-wrap:wrap;
-      color:var(--muted2);
-      font-size:12.5px;
-      letter-spacing:.12em;
       text-transform:uppercase;
+      letter-spacing:.10em;
     }
 
-    .divider{
-      height:1px;
-      background:rgba(255,255,255,.08);
-      margin:14px 0 14px;
-    }
-
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
+    .pillrow{
+      display:flex;flex-wrap:wrap;gap:8px;
       justify-content:center;
       margin-top:6px;
     }
-
-    .chip{
-      padding:10px 14px;
+    .pill{
+      font-size:12px;
+      padding:7px 10px;
       border-radius:999px;
+      border:1px solid var(--border);
       background:var(--chip);
-      border:1px solid rgba(255,255,255,.10);
-      color:rgba(255,255,255,.70);
-      font-size:13px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 8px 22px rgba(0,0,0,.20);
+      color:var(--muted);
     }
 
-    .wide-chip{
-      width:100%;
-      text-align:center;
-      padding:12px 14px;
-      margin-top:12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      color:rgba(255,255,255,.72);
-      font-size:13px;
-      line-height:1.35;
-    }
-
-    .buttons{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      margin-top:16px;
-    }
-
-    .btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    .btnrow{
+      display:grid;
+      grid-template-columns:1fr 1fr;
       gap:10px;
-      width:100%;
-      padding:14px 14px;
-      border-radius:18px;
-      background:var(--btn);
-      border:1px solid rgba(255,255,255,.12);
-      color:rgba(255,255,255,.88);
-      text-decoration:none;
-      font-weight:600;
-      box-shadow: 0 10px 28px rgba(0,0,0,.25);
-      transition: transform .08s ease, background .2s ease;
+      max-width:720px;
+      margin:8px auto 0;
+    }
+    .btn{
+      display:flex;align-items:center;justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:var(--chip);
+      font-weight:750;
+      font-size:14px;
+      min-height:46px;
       user-select:none;
-      -webkit-tap-highlight-color: transparent;
+      cursor:pointer;
     }
-    .btn:hover{ background:var(--btn2); }
-    .btn:active{ transform: scale(.99); }
-
     .btn.primary{
-      background: rgba(47,124,246,.22);
-      border:1px solid rgba(47,124,246,.35);
+      background:var(--btn);
+      border-color:rgba(122,167,255,.35);
     }
-    .btn.primary:hover{
-      background: rgba(47,124,246,.28);
+    .full{grid-column:1/-1}
+
+    .hr{height:1px;background:var(--border);margin:0 20px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:14px;
+      padding:18px 20px 20px;
+    }
+    @media (max-width:860px){ .grid{grid-template-columns:1fr} }
+
+    section{
+      padding:16px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:var(--panel);
+    }
+    section h2{
+      margin:0 0 10px;
+      font-size:13px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
     }
 
-    .btn.link{
-      color: var(--accent);
-      background: rgba(255,255,255,.03);
+    p{margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .list{margin:0;padding-left:18px}
+    .list li{margin:6px 0}
+
+    .kpi{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    @media(max-width:520px){ .kpi{grid-template-columns:1fr} }
+    .box{
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:var(--chip);
+    }
+    .label{font-size:12px;color:var(--muted)}
+    .value{font-size:14px;font-weight:850;margin-top:4px}
+
+    .skills{
+      display:flex;flex-wrap:wrap;gap:8px;margin-top:8px
+    }
+    .skill{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--chip);
+      color:var(--text);
     }
 
-    .btn-row{
-      display:flex;
+    .edu-grid{
+      display:grid;
+      grid-template-columns:1fr;
       gap:12px;
     }
-    .btn-row .btn{ flex:1; }
+    @media(min-width:540px){ .edu-grid{grid-template-columns:1fr 1fr} }
 
-    .icon{
-      width:18px;
-      height:18px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      opacity:.95;
+    .edu-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      background:var(--chip);
     }
-
-    /* HUMAN SECTION */
-    .section{
-      margin-top:16px;
-      padding:16px 16px 18px;
-      border-radius: 26px;
-      border:1px solid var(--stroke);
-      background: rgba(0,0,0,.18);
-      box-shadow: 0 14px 40px rgba(0,0,0,.28);
-    }
-    .section h3{
-      margin:0 0 10px;
-      font-size:15px;
-      color:rgba(255,255,255,.82);
-      letter-spacing:.04em;
-    }
-
-    /* Dog photo moved DOWN into Human section */
-    .dog-photo{
+    .edu-img{
       width:100%;
-      max-width:280px;
-      border-radius:18px;
-      display:block;
-      margin: 8px auto 12px;
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow: 0 10px 30px rgba(0,0,0,.32);
+      height:170px;
       object-fit:cover;
+      display:block;
+      background:#070d1b;
     }
+    .edu-body{padding:12px}
+    .edu-title{font-weight:850;font-size:14px;margin:0 0 4px}
+    .edu-meta{font-size:12px;color:var(--muted);margin:0}
 
-    .human-text{
-      color:rgba(255,255,255,.70);
-      font-size:13.5px;
-      line-height:1.5;
+    footer{
       text-align:center;
-      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      padding:14px 20px 16px;
+      background:var(--card);
+      border-top:1px solid var(--border);
     }
 
-    /* small screens */
-    @media (max-width: 380px){
-      .profile-photo{ width:124px; height:124px; }
-      .profile-text h1{ font-size:28px; }
+    .tiny{
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      margin-top:6px;
+      min-height:16px;
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="card">
 
-      <!-- HEADER: headshot only (dog photo removed from top) -->
-      <div class="profile-header">
-        <!-- ✅ Replace with your actual headshot path -->
-        <img class="profile-photo" src="assets/reza-headshot.jpg" alt="Reza Moraveji Headshot" />
+      <header>
+        <div class="header-top">
+          <img class="avatar" src="/assets/images/profile.jpg" alt="Reza Moraveji headshot" loading="eager" decoding="async" />
 
-        <div class="profile-text">
-          <h1>Reza<br/>Moraveji</h1>
-          <div class="title">
-            Associate<br/>
-            Director · Verizon<br/>
-            (Enhanced Communities)
+          <div class="header-main">
+            <h1>Reza Moraveji</h1>
+            <div class="subtitle">Associate Director • Verizon (Enhanced Communities)</div>
+            <div class="credline">MBA • Six Sigma Green Belt • Scrum Master</div>
           </div>
 
-          <!-- ✅ Evenly spaced subtitles BELOW title -->
-          <div class="credentials">
-            <span>MBA</span>
-            <span>Six Sigma Green Belt</span>
-            <span>Scrum Master</span>
+          <img class="dogs" src="/assets/images/Dogs.jpg" alt="Cyrus & Simba" loading="lazy" decoding="async" />
+        </div>
+
+        <div class="pillrow">
+          <span class="pill">Hands-on</span>
+          <span class="pill">Data-driven</span>
+          <span class="pill">Team Development</span>
+          <span class="pill">High D / I (DISC)</span>
+          <span class="pill">CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus</span>
+        </div>
+
+        <div class="btnrow">
+          <!-- ✅ Resume path (routed correctly) -->
+          <a class="btn primary full" href="/assets/images/Reza-Moraveji-Resume.pdf" target="_blank" rel="noopener">📄 View Resume</a>
+
+          <button class="btn full" id="saveContactBtn">📇 Save My Contact</button>
+
+          <a class="btn" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+
+          <a class="btn full" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank" rel="noopener">📅 Schedule Time</a>
+        </div>
+
+        <div class="tiny" id="vcfStatus"></div>
+      </header>
+
+      <div class="hr"></div>
+
+      <div class="grid">
+        <section>
+          <h2>Brief Bio</h2>
+          <p>
+            I’m an Associate Director at Verizon leading teams within the Enhanced Communities channel.
+            My leadership style is hands-on and metrics-driven, focused on accountability, clarity,
+            and consistent execution.
+          </p>
+          <p class="muted">
+            I specialize in developing talent, aligning incentives with behavior, and building operating rhythms
+            that scale performance.
+          </p>
+
+          <h2 style="margin-top:14px;">DISC Management Style</h2>
+          <ul class="list">
+            <li><strong>High D:</strong> decisive, direct, ownership-driven</li>
+            <li><strong>High I:</strong> energizing, communicative, motivating</li>
+            <li><strong>How I lead:</strong> clear expectations + frequent feedback + visible scoreboards</li>
+          </ul>
+
+          <h2 style="margin-top:14px;">Skills</h2>
+          <div class="skills">
+            <span class="skill">Leadership & Coaching</span>
+            <span class="skill">Territory Performance</span>
+            <span class="skill">Partnership Strategy</span>
+            <span class="skill">Stakeholder Management</span>
+            <span class="skill">Sales Enablement</span>
+            <span class="skill">Process Improvement</span>
+            <span class="skill">Data-Driven Execution</span>
+            <span class="skill">Operating Rhythms</span>
+            <span class="skill">Team Development</span>
           </div>
-        </div>
+
+          <h2 style="margin-top:14px;">Human</h2>
+          <ul class="list">
+            <li><strong>Dog dad:</strong> Cyrus (Standard Poodle) & Simba (Goldendoodle)</li>
+            <li><strong>Sports:</strong> Ohio State football • Colts fan</li>
+            <li><strong>Books:</strong> The Miracle Morning • Good to Great • Dare to Lead • The First 90 Days • Extreme Ownership</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>CliftonStrengths</h2>
+          <div class="kpi">
+            <div class="box"><div class="label">Restorative</div><div class="value">Fix what’s broken fast</div></div>
+            <div class="box"><div class="label">Individualization</div><div class="value">Coach to each person</div></div>
+            <div class="box"><div class="label">Arranger</div><div class="value">Optimize moving parts</div></div>
+            <div class="box"><div class="label">Significance</div><div class="value">High standards</div></div>
+            <div class="box"><div class="label">Focus</div><div class="value">Relentless priorities</div></div>
+          </div>
+
+          <h2 style="margin-top:14px;">Education & Credentials</h2>
+          <div class="edu-grid">
+            <div class="edu-card">
+              <img class="edu-img" src="/assets/images/Indiana-University.jpg" alt="Indiana University Degree" loading="lazy" decoding="async" />
+              <div class="edu-body">
+                <p class="edu-title">Indiana University</p>
+                <p class="edu-meta">B.S. — Public Policy</p>
+              </div>
+            </div>
+
+            <div class="edu-card">
+              <img class="edu-img" src="/assets/images/Western-Governors.jpg" alt="Western Governors University MBA" loading="lazy" decoding="async" />
+              <div class="edu-body">
+                <p class="edu-title">Western Governors University</p>
+                <p class="edu-meta">MBA</p>
+              </div>
+            </div>
+
+            <div class="edu-card">
+              <img class="edu-img" src="/assets/images/Six-Sigma-Green-Belt.jpg" alt="Six Sigma Green Belt" loading="lazy" decoding="async" />
+              <div class="edu-body">
+                <p class="edu-title">Six Sigma Green Belt</p>
+                <p class="edu-meta">Certificate</p>
+              </div>
+            </div>
+
+            <div class="edu-card">
+              <div class="edu-body">
+                <p class="edu-title">Scrum Master</p>
+                <p class="edu-meta">Credential on file (no image)</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
-      <div class="chips">
-        <div class="chip">Hands-on</div>
-        <div class="chip">Data-driven</div>
-        <div class="chip">Team Development</div>
-        <div class="chip">High D / I (DISC)</div>
-      </div>
+      <footer>
+        NFC-ready profile • Update anytime without reprogramming
+      </footer>
 
-      <div class="wide-chip">
-        CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus
-      </div>
-
-      <div class="buttons">
-        <!-- ✅ Replace href with your resume file -->
-        <a class="btn primary" href="assets/Reza_Moraveji_Resume.pdf" target="_blank" rel="noopener">
-          <span class="icon">📄</span> View Resume
-        </a>
-
-        <!-- ✅ Replace href with your VCF file -->
-        <a class="btn link" href="assets/Reza_Moraveji.vcf" download>
-          <span class="icon">💾</span> Save My Contact
-        </a>
-
-        <div class="btn-row">
-          <!-- ✅ Replace with your email -->
-          <a class="btn" href="mailto:rezamoraveji1@gmail.com">
-            <span class="icon">✉️</span> Email
-          </a>
-
-          <!-- ✅ Replace with your LinkedIn -->
-          <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank" rel="noopener">
-            <span class="icon">🔗</span> LinkedIn
-          </a>
-        </div>
-
-        <!-- ✅ Replace with your scheduler link -->
-        <a class="btn" href="https://calendly.com/YOUR-LINK/" target="_blank" rel="noopener">
-          <span class="icon">📅</span> Schedule Time
-        </a>
-      </div>
-    </div>
-
-    <!-- HUMAN SECTION (dog photo moved here per your request) -->
-    <div class="section">
-      <h3>Human</h3>
-
-      <!-- ✅ Dog photo moved DOWN into Human section -->
-      <img class="dog-photo" src="assets/dogs.jpg" alt="Simba and Cyrus" />
-
-      <!-- Keep this section content however you want -->
-      <p class="human-text">
-        Dog dad to Simba (goldendoodle) and Cyrus (standard poodle). Big on fitness, growth, and building great teams.
-      </p>
     </div>
   </div>
 
   <script>
-    // No behavior changes needed for your requested layout updates.
-    // Keep your existing JS (if any) below this line.
+    // iPhone-friendly vCard save: fetch your .vcf and re-serve as text/vcard
+    const vcfUrl = "/assets/vcf/RezaMoraveji-Personal.vcf";
+    const btn = document.getElementById("saveContactBtn");
+    const statusEl = document.getElementById("vcfStatus");
+
+    btn.addEventListener("click", async () => {
+      statusEl.textContent = "Preparing contact…";
+      try {
+        const res = await fetch(vcfUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error("Could not load vCard (check file path).");
+
+        const text = await res.text();
+        const blob = new Blob([text], { type: "text/vcard;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "RezaMoraveji-Personal.vcf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+        statusEl.textContent = "If prompted, choose “Add to Contacts”.";
+      } catch (e) {
+        statusEl.textContent = "Opening contact file…";
+        window.location.href = vcfUrl;
+      }
+    });
   </script>
 </body>
 </html>
