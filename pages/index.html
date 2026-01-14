@@ -43,26 +43,28 @@
 
     header{padding:20px;display:grid;gap:14px}
 
-    /* ✅ UPDATED HEADER LAYOUT */
+    /* ✅ NEW: GRID HEADER THAT LETS LOWER CONTENT SPAN FULL WIDTH */
     .header-top{
-      display:flex;
-      align-items:center;
+      display:grid;
+      grid-template-columns:110px 1fr;
       gap:16px;
+      align-items:center;
     }
+
     .avatar{
-      width:110px;            /* bigger */
+      width:110px;
       height:110px;
       border-radius:22px;
       object-fit:cover;
       border:1px solid var(--border);
       background:#070d1b;
-      flex:0 0 auto;
     }
+
     .header-main{
       text-align:left;
-      flex:1;
       min-width:0;
     }
+
     h1{
       margin:0;
       font-size:26px;
@@ -74,17 +76,26 @@
       font-size:14px;
     }
     .credline{
-      margin-top:8px;          /* spaced and even */
+      margin-top:8px;
       font-size:12px;
       color:var(--muted);
       text-transform:uppercase;
       letter-spacing:.10em;
     }
 
+    /* ✅ NEW: FULL-WIDTH AREA (spans both columns) */
+    .header-full{
+      grid-column:1 / -1;
+      margin-top:10px;
+      display:grid;
+      gap:12px;
+    }
+
     .pillrow{
-      display:flex;flex-wrap:wrap;gap:8px;
-      justify-content:flex-start; /* aligns with name/title now */
-      margin-top:6px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-start;
     }
     .pill{
       font-size:12px;
@@ -99,8 +110,8 @@
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:10px;
-      max-width:720px;
-      margin:10px 0 0; /* align to left block, not centered */
+      width:100%;            /* ✅ full width now */
+      margin:0;              /* ✅ remove old left bias */
     }
     .btn{
       display:flex;align-items:center;justify-content:center;
@@ -129,11 +140,18 @@
       gap:14px;
       padding:18px 20px 20px;
     }
+
     @media (max-width:860px){
       .grid{grid-template-columns:1fr}
-      .header-top{align-items:flex-start}
+
+      .header-top{
+        grid-template-columns:96px 1fr;
+        align-items:start;
+      }
       .avatar{width:96px;height:96px}
-      .btnrow{max-width:none}
+
+      .btnrow{grid-template-columns:1fr}
+      .full{grid-column:auto}
     }
 
     section{
@@ -206,7 +224,6 @@
     .edu-title{font-weight:850;font-size:14px;margin:0 0 4px}
     .edu-meta{font-size:12px;color:var(--muted);margin:0}
 
-    /* ✅ Dogs image moved to Human section */
     .human-dogs{
       margin-top:12px;
       border:1px solid var(--border);
@@ -258,7 +275,10 @@
             <h1>Reza Moraveji</h1>
             <div class="subtitle">Associate Director • Verizon (Enhanced Communities)</div>
             <div class="credline">MBA • Six Sigma Green Belt • Scrum Master</div>
+          </div>
 
+          <!-- ✅ FULL WIDTH BELOW PHOTO + TEXT -->
+          <div class="header-full">
             <div class="pillrow">
               <span class="pill">Hands-on</span>
               <span class="pill">Data-driven</span>
@@ -317,14 +337,13 @@
             <span class="skill">Team Development</span>
           </div>
 
-          <h2 style="margin-top:14px;">Personal</h2>
+          <h2 style="margin-top:14px;">Human</h2>
           <ul class="list">
             <li><strong>Dog dad:</strong> Cyrus (Standard Poodle) & Simba (Goldendoodle)</li>
-            <li><strong>Sports:</strong> Ohio State football • Indianapolis Colts</li>
-            <li><strong>Books:</strong> The Morning Miracle • Good to Great • Dare to Lead • The First 90 Days • Extreme Ownership</li>
+            <li><strong>Sports:</strong> Ohio State football • Colts fan</li>
+            <li><strong>Books:</strong> The Miracle Morning • Good to Great • Dare to Lead • The First 90 Days • Extreme Ownership</li>
           </ul>
 
-          <!-- ✅ Dogs image moved here -->
           <div class="human-dogs">
             <img src="/assets/images/Dogs.jpg" alt="Cyrus & Simba" loading="lazy" decoding="async" />
             <div class="cap">Cyrus (Standard Poodle) • Simba (Goldendoodle)</div>
