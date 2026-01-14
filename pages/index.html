@@ -6,85 +6,70 @@
   <title>Reza Moraveji — Leadership Portfolio</title>
   <meta name="description" content="Reza Moraveji — Associate Director at Verizon | Leadership Portfolio" />
 
-  <!-- Social preview -->
   <meta property="og:title" content="Reza Moraveji — Leadership Portfolio" />
   <meta property="og:description" content="Resume • Bio • Strengths • Education • Leadership Style" />
   <meta property="og:image" content="assets/images/profile.jpg" />
 
   <style>
     :root{
-      --bg:#070a12;
-      --text:#eaf0ff;
-      --muted:#b9c7ea;
+      --bg:#0b0f19;
+      --card:#121a2b;
+      --text:#e9eefc;
+      --muted:#b9c4e2;
+      --accent:#7aa7ff;
       --border:rgba(255,255,255,.10);
-      --glassA:rgba(255,255,255,.08);
-      --glassB:rgba(255,255,255,.04);
-      --shadow:0 24px 70px rgba(0,0,0,.50);
-      --accent1:rgba(122,167,255,.22);
-      --accent2:rgba(0,255,209,.10);
-      --accent3:rgba(255,184,0,.10);
     }
 
     *{box-sizing:border-box}
+
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 800px at 20% 0%, rgba(122,167,255,.18), transparent 60%),
+        radial-gradient(1000px 700px at 90% 10%, rgba(140,255,210,.10), transparent 55%),
+        var(--bg);
       color:var(--text);
       line-height:1.5;
-      background:
-        radial-gradient(900px 700px at 15% 0%, var(--accent1), transparent 60%),
-        radial-gradient(900px 700px at 90% 10%, var(--accent2), transparent 60%),
-        radial-gradient(900px 700px at 55% 95%, var(--accent3), transparent 55%),
-        linear-gradient(180deg, #050711 0%, var(--bg) 55%, #050711 100%);
     }
-    a{color:inherit; text-decoration:none}
 
-    .wrap{max-width:980px; margin:0 auto; padding:18px}
+    a{color:inherit;text-decoration:none}
+
+    .wrap{max-width:960px;margin:0 auto;padding:24px}
 
     .card{
-      background:linear-gradient(180deg, var(--glassA), var(--glassB));
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--border);
-      border-radius:22px;
-      box-shadow:var(--shadow);
+      border-radius:18px;
+      box-shadow:0 14px 40px rgba(0,0,0,.35);
       overflow:hidden;
-      backdrop-filter: blur(10px);
     }
 
-    header{padding:22px; display:grid; gap:14px}
+    header{padding:22px;display:grid;gap:14px}
 
     .header-top{
       display:grid;
-      grid-template-columns:92px 1fr 92px;
+      grid-template-columns:86px 1fr 86px;
       align-items:center;
-      gap:14px;
+      gap:18px;
     }
 
     .avatar,.dogs{
-      width:92px; height:92px;
+      width:86px;height:86px;
       border-radius:18px;
       object-fit:cover;
       border:1px solid var(--border);
-      background:rgba(255,255,255,.05);
-      box-shadow:0 12px 30px rgba(0,0,0,.25);
     }
 
-    .header-main{
-      text-align:center;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-    }
-
-    h1{margin:0; font-size:26px; line-height:1.1}
-    .subtitle{margin:0; font-size:14px; color:var(--muted)}
+    .header-main{text-align:center}
+    h1{margin:0;font-size:22px}
+    .subtitle{margin-top:4px;color:var(--muted);font-size:14px}
     .credline{
-      margin-top:2px;
+      margin-top:4px;
       font-size:12px;
       color:var(--muted);
-      letter-spacing:.10em;
       text-transform:uppercase;
+      letter-spacing:.08em;
     }
 
     .pillrow{
@@ -92,294 +77,149 @@
       flex-wrap:wrap;
       gap:8px;
       justify-content:center;
-      max-width:760px;
-      margin:0 auto;
+      margin-top:8px;
     }
+
     .pill{
       font-size:12px;
-      color:var(--muted);
-      padding:7px 11px;
+      padding:6px 10px;
       border-radius:999px;
       border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      line-height:1.1;
-      white-space:nowrap;
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
     }
 
     .btnrow{
-      max-width:760px;
-      margin:2px auto 0;
-      display:grid;
-      grid-template-columns:1fr 1fr;
+      display:flex;
+      flex-wrap:wrap;
       gap:10px;
+      justify-content:center;
+      margin-top:10px;
     }
 
     .btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      width:100%;
-      min-height:48px;
-      padding:12px 14px;
-      border-radius:14px;
+      padding:11px 14px;
+      border-radius:12px;
       border:1px solid var(--border);
-      font-weight:650;
-      font-size:15px;
-      color:var(--text);
-      background:rgba(255,255,255,.05);
-      box-shadow:0 12px 26px rgba(0,0,0,.22);
-      user-select:none;
-    }
-    .btn.primary{
-      background:linear-gradient(180deg, rgba(122,167,255,.30), rgba(122,167,255,.14));
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .btn:active{transform:scale(.99)}
-    .full{grid-column:1/-1}
-
-    @media (max-width:540px){
-      .wrap{padding:14px}
-      .header-top{grid-template-columns:78px 1fr 78px}
-      .avatar,.dogs{width:78px;height:78px}
-      h1{font-size:22px}
-      .pill{white-space:normal}
+      background:rgba(122,167,255,.15);
+      font-weight:600;
+      font-size:14px;
     }
 
-    .hr{height:1px; background:var(--border); margin:0 22px}
+    .btn.secondary{background:rgba(255,255,255,.04)}
+
+    .hr{height:1px;background:var(--border);margin:0 22px}
 
     .grid{
       display:grid;
       grid-template-columns:1.15fr .85fr;
       gap:14px;
-      padding:16px 22px 18px;
+      padding:22px;
     }
-    @media (max-width:860px){ .grid{grid-template-columns:1fr} }
+
+    @media(max-width:860px){
+      .grid{grid-template-columns:1fr}
+    }
 
     section{
       padding:16px;
       border:1px solid var(--border);
-      border-radius:18px;
-      background:rgba(0,0,0,.16);
+      border-radius:16px;
+      background:rgba(0,0,0,.12);
     }
+
     section h2{
-      margin:0 0 12px;
-      font-size:13px;
-      letter-spacing:.12em;
+      margin:0 0 10px;
+      font-size:14px;
+      letter-spacing:.08em;
       text-transform:uppercase;
       color:var(--muted);
     }
-    p{margin:0 0 10px}
-    .muted{color:var(--muted)}
-    .list{margin:0; padding-left:18px}
-    .list li{margin:7px 0}
 
-    .kpi{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-    }
-    @media (max-width:520px){ .kpi{grid-template-columns:1fr} }
-    .kpi .box{
+    .list{margin:0;padding-left:18px}
+    .list li{margin:6px 0}
+
+    .kpi{display:flex;flex-wrap:wrap;gap:10px}
+    .box{
+      flex:1;min-width:160px;
       padding:12px;
-      border-radius:16px;
+      border-radius:14px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.03);
     }
-    .kpi .label{font-size:12px; color:var(--muted)}
-    .kpi .value{font-size:14px; font-weight:750; margin-top:4px}
 
-    .edu-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:12px;
-    }
-    @media (min-width:520px){ .edu-grid{grid-template-columns:1fr 1fr} }
-    .edu-card{
-      border:1px solid var(--border);
-      border-radius:18px;
-      overflow:hidden;
-      background:rgba(255,255,255,.03);
-    }
-    .edu-card img{
-      width:100%;
-      height:170px;
-      object-fit:cover;
-      display:block;
-    }
-    .edu-body{padding:12px}
-    .edu-title{font-weight:750; font-size:14px; margin-bottom:4px}
-    .edu-meta{font-size:12px; color:var(--muted)}
-    .pdf-link{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.05);
-      font-size:13px;
-      font-weight:650;
-    }
-
-    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-    .chip{
-      font-size:12px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-    }
-
-    footer{
-      padding:12px 22px 16px;
-      text-align:center;
-      color:var(--muted);
-      font-size:12px;
-    }
+    footer{text-align:center;color:var(--muted);font-size:12px;padding:16px}
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="card">
+<div class="wrap">
+<div class="card">
 
-      <header>
-        <div class="header-top">
-          <img class="avatar" src="assets/images/profile.jpg" alt="Reza Moraveji headshot" />
-
-          <div class="header-main">
-            <h1>Reza Moraveji</h1>
-            <div class="subtitle">Associate Director • Verizon (Enhanced Communities)</div>
-            <div class="credline">MBA • Six Sigma Green Belt • Scrum Master</div>
-          </div>
-
-          <!-- ✅ FIXED HERE -->
-          <img class="dogs" src="assets/images/Dogs.jpg" alt="Cyrus & Simba" />
-        </div>
-
-        <div class="pillrow">
-          <span class="pill">Hands-on</span>
-          <span class="pill">Data-driven</span>
-          <span class="pill">Team Development</span>
-          <span class="pill">High D / I (DISC)</span>
-          <span class="pill">CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus</span>
-        </div>
-
-        <div class="btnrow">
-          <a class="btn primary full" href="assets/images/Reza-Moraveji-Resume.pdf" target="_blank" rel="noopener">📄 View Resume</a>
-
-          <a class="btn full" id="saveContactBtn" href="RezaMoraveji-Personal.vcf">📇 Save My Contact</a>
-
-          <a class="btn" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
-          <a class="btn" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
-
-          <a class="btn full" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank" rel="noopener">📅 Schedule Time</a>
-        </div>
-      </header>
-
-      <div class="hr"></div>
-
-      <div class="grid">
-        <section>
-          <h2>Brief Bio</h2>
-          <p>
-            I’m an Associate Director at Verizon leading teams within the Enhanced Communities channel.
-            My leadership style is hands-on and metrics-driven, focused on accountability, clarity,
-            and consistent execution.
-          </p>
-          <p class="muted">
-            I specialize in developing talent, aligning incentives with behavior, and building
-            operating rhythms that scale performance.
-          </p>
-
-          <h2 style="margin-top:16px;">DISC Management Style</h2>
-          <ul class="list">
-            <li><strong>High D:</strong> decisive, direct, ownership-driven</li>
-            <li><strong>High I:</strong> energizing, communicative, motivating</li>
-            <li><strong>How I lead:</strong> clear expectations + frequent feedback + visible scoreboards</li>
-          </ul>
-
-          <h2 style="margin-top:16px;">Human</h2>
-          <ul class="list">
-            <li><strong>Dog dad:</strong> Cyrus (Standard Poodle) & Simba (Goldendoodle)</li>
-            <li><strong>Sports:</strong> Ohio State football • Indianapolis Colts</li>
-            <li><strong>Reading:</strong> Personal development & leadership</li>
-          </ul>
-
-          <div class="chips">
-            <span class="chip">📘 The Miracle Morning</span>
-            <span class="chip">📗 Good to Great</span>
-            <span class="chip">📙 Dare to Lead</span>
-            <span class="chip">📕 The First 90 Days</span>
-            <span class="chip">📒 Extreme Ownership</span>
-          </div>
-        </section>
-
-        <section>
-          <h2>CliftonStrengths</h2>
-          <div class="kpi">
-            <div class="box"><div class="label">Restorative</div><div class="value">Fix what’s broken</div></div>
-            <div class="box"><div class="label">Individualization</div><div class="value">Coach to the person</div></div>
-            <div class="box"><div class="label">Arranger</div><div class="value">Optimize complexity</div></div>
-            <div class="box"><div class="label">Significance</div><div class="value">High standards</div></div>
-            <div class="box"><div class="label">Focus</div><div class="value">Relentless priorities</div></div>
-          </div>
-
-          <h2 style="margin-top:16px;">Education & Credentials</h2>
-          <div class="edu-grid">
-            <div class="edu-card">
-              <img src="assets/images/Indiana-University.jpg" alt="Indiana University Degree" />
-              <div class="edu-body">
-                <div class="edu-title">Indiana University</div>
-                <div class="edu-meta">B.S. — Public Policy</div>
-              </div>
-            </div>
-
-            <div class="edu-card">
-              <img src="assets/images/Western-Governors.jpg" alt="Western Governors University MBA" />
-              <div class="edu-body">
-                <div class="edu-title">Western Governors University</div>
-                <div class="edu-meta">MBA</div>
-              </div>
-            </div>
-
-            <div class="edu-card">
-              <div class="edu-body">
-                <div class="edu-title">Six Sigma Green Belt</div>
-                <div class="edu-meta">Certificate (PDF)</div>
-                <a class="pdf-link" href="assets/images/Six-Sigma-Green-Belt.pdf" target="_blank" rel="noopener">📄 View PDF</a>
-              </div>
-            </div>
-
-            <div class="edu-card">
-              <div class="edu-body">
-                <div class="edu-title">Scrum Master Certificate</div>
-                <div class="edu-meta">Credential on file (no image)</div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <footer>
-        NFC-ready profile • Update anytime without reprogramming
-      </footer>
-
+<header>
+  <div class="header-top">
+    <img class="avatar" src="assets/images/profile.jpg" alt="Reza Moraveji">
+    <div class="header-main">
+      <h1>Reza Moraveji</h1>
+      <div class="subtitle">Associate Director • Verizon (Enhanced Communities)</div>
+      <div class="credline">MBA • Six Sigma Green Belt • Scrum Master</div>
     </div>
+    <img class="dogs" src="assets/images/Dogs.jpg" alt="Cyrus & Simba">
   </div>
 
-  <script>
-    // Helps some browsers handle .vcf better
-    (function(){
-      var btn = document.getElementById("saveContactBtn");
-      if(!btn) return;
-      try{
-        btn.setAttribute("download", "RezaMoraveji-Personal.vcf");
-      } catch(e){}
-    })();
-  </script>
+  <div class="pillrow">
+    <span class="pill">Hands-on</span>
+    <span class="pill">Data-driven</span>
+    <span class="pill">Team Development</span>
+    <span class="pill">High D / I (DISC)</span>
+    <span class="pill">CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus</span>
+  </div>
+
+  <div class="btnrow">
+    <a class="btn" href="assets/images/Reza-Moraveji-Resume.pdf" target="_blank">📄 Resume</a>
+    <a class="btn secondary" href="RezaMoraveji-Personal.vcf">📇 Save Contact</a>
+    <a class="btn secondary" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
+    <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank">🔗 LinkedIn</a>
+    <a class="btn secondary" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank">📅 Schedule Time</a>
+  </div>
+</header>
+
+<div class="hr"></div>
+
+<div class="grid">
+<section>
+  <h2>Brief Bio</h2>
+  <p>
+    I’m an Associate Director at Verizon leading teams within the Enhanced Communities channel.
+    My leadership style is hands-on and metrics-driven, focused on accountability, clarity,
+    and consistent execution.
+  </p>
+
+  <h2 style="margin-top:14px;">DISC Management Style</h2>
+  <ul class="list">
+    <li><strong>High D:</strong> decisive, ownership-driven</li>
+    <li><strong>High I:</strong> energizing, motivating</li>
+    <li><strong>Leadership:</strong> expectations + feedback + scorecards</li>
+  </ul>
+</section>
+
+<section>
+  <h2>CliftonStrengths</h2>
+  <div class="kpi">
+    <div class="box">Restorative</div>
+    <div class="box">Individualization</div>
+    <div class="box">Arranger</div>
+    <div class="box">Significance</div>
+    <div class="box">Focus</div>
+  </div>
+</section>
+</div>
+
+<footer>
+  NFC-ready profile • Update anytime without reprogramming
+</footer>
+
+</div>
+</div>
 </body>
 </html>
