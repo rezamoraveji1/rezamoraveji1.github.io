@@ -43,27 +43,38 @@
 
     header{padding:20px;display:grid;gap:14px}
 
+    /* ✅ UPDATED HEADER LAYOUT */
     .header-top{
-      display:grid;
-      grid-template-columns:86px 1fr 86px;
+      display:flex;
       align-items:center;
-      gap:14px;
+      gap:16px;
     }
-
-    .avatar,.dogs{
-      width:86px;height:86px;
-      border-radius:18px;
+    .avatar{
+      width:110px;            /* bigger */
+      height:110px;
+      border-radius:22px;
       object-fit:cover;
       border:1px solid var(--border);
       background:#070d1b;
-      display:block;
+      flex:0 0 auto;
     }
-
-    .header-main{text-align:center}
-    h1{margin:0;font-size:24px;line-height:1.15}
-    .subtitle{margin-top:6px;color:var(--muted);font-size:14px}
-    .credline{
+    .header-main{
+      text-align:left;
+      flex:1;
+      min-width:0;
+    }
+    h1{
+      margin:0;
+      font-size:26px;
+      line-height:1.15;
+    }
+    .subtitle{
       margin-top:6px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .credline{
+      margin-top:8px;          /* spaced and even */
       font-size:12px;
       color:var(--muted);
       text-transform:uppercase;
@@ -72,7 +83,7 @@
 
     .pillrow{
       display:flex;flex-wrap:wrap;gap:8px;
-      justify-content:center;
+      justify-content:flex-start; /* aligns with name/title now */
       margin-top:6px;
     }
     .pill{
@@ -89,7 +100,7 @@
       grid-template-columns:1fr 1fr;
       gap:10px;
       max-width:720px;
-      margin:8px auto 0;
+      margin:10px 0 0; /* align to left block, not centered */
     }
     .btn{
       display:flex;align-items:center;justify-content:center;
@@ -118,7 +129,12 @@
       gap:14px;
       padding:18px 20px 20px;
     }
-    @media (max-width:860px){ .grid{grid-template-columns:1fr} }
+    @media (max-width:860px){
+      .grid{grid-template-columns:1fr}
+      .header-top{align-items:flex-start}
+      .avatar{width:96px;height:96px}
+      .btnrow{max-width:none}
+    }
 
     section{
       padding:16px;
@@ -190,6 +206,27 @@
     .edu-title{font-weight:850;font-size:14px;margin:0 0 4px}
     .edu-meta{font-size:12px;color:var(--muted);margin:0}
 
+    /* ✅ Dogs image moved to Human section */
+    .human-dogs{
+      margin-top:12px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      background:var(--chip);
+    }
+    .human-dogs img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:block;
+      background:#070d1b;
+    }
+    .human-dogs .cap{
+      padding:10px 12px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
     footer{
       text-align:center;
       color:var(--muted);
@@ -200,7 +237,7 @@
     }
 
     .tiny{
-      text-align:center;
+      text-align:left;
       font-size:12px;
       color:var(--muted);
       margin-top:6px;
@@ -221,32 +258,28 @@
             <h1>Reza Moraveji</h1>
             <div class="subtitle">Associate Director • Verizon (Enhanced Communities)</div>
             <div class="credline">MBA • Six Sigma Green Belt • Scrum Master</div>
+
+            <div class="pillrow">
+              <span class="pill">Hands-on</span>
+              <span class="pill">Data-driven</span>
+              <span class="pill">Team Development</span>
+              <span class="pill">High D / I (DISC)</span>
+              <span class="pill">CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus</span>
+            </div>
+
+            <div class="btnrow">
+              <a class="btn primary full" href="/assets/images/Reza-Moraveji-Resume.pdf" target="_blank" rel="noopener">📄 View Resume</a>
+              <button class="btn full" id="saveContactBtn">📇 Save My Contact</button>
+
+              <a class="btn" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
+              <a class="btn" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+
+              <a class="btn full" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank" rel="noopener">📅 Schedule Time</a>
+            </div>
+
+            <div class="tiny" id="vcfStatus"></div>
           </div>
-
-          <img class="dogs" src="/assets/images/Dogs.jpg" alt="Cyrus & Simba" loading="lazy" decoding="async" />
         </div>
-
-        <div class="pillrow">
-          <span class="pill">Hands-on</span>
-          <span class="pill">Data-driven</span>
-          <span class="pill">Team Development</span>
-          <span class="pill">High D / I (DISC)</span>
-          <span class="pill">CliftonStrengths: Restorative • Individualization • Arranger • Significance • Focus</span>
-        </div>
-
-        <div class="btnrow">
-          <!-- ✅ Resume path (routed correctly) -->
-          <a class="btn primary full" href="/assets/images/Reza-Moraveji-Resume.pdf" target="_blank" rel="noopener">📄 View Resume</a>
-
-          <button class="btn full" id="saveContactBtn">📇 Save My Contact</button>
-
-          <a class="btn" href="mailto:rezamoraveji1@gmail.com">✉️ Email</a>
-          <a class="btn" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">🔗 LinkedIn</a>
-
-          <a class="btn full" href="https://calendar.app.google/oAM3j1aekbcYhgit8" target="_blank" rel="noopener">📅 Schedule Time</a>
-        </div>
-
-        <div class="tiny" id="vcfStatus"></div>
       </header>
 
       <div class="hr"></div>
@@ -290,6 +323,12 @@
             <li><strong>Sports:</strong> Ohio State football • Colts fan</li>
             <li><strong>Books:</strong> The Miracle Morning • Good to Great • Dare to Lead • The First 90 Days • Extreme Ownership</li>
           </ul>
+
+          <!-- ✅ Dogs image moved here -->
+          <div class="human-dogs">
+            <img src="/assets/images/Dogs.jpg" alt="Cyrus & Simba" loading="lazy" decoding="async" />
+            <div class="cap">Cyrus (Standard Poodle) • Simba (Goldendoodle)</div>
+          </div>
         </section>
 
         <section>
@@ -346,7 +385,6 @@
   </div>
 
   <script>
-    // iPhone-friendly vCard save: fetch your .vcf and re-serve as text/vcard
     const vcfUrl = "/assets/vcf/RezaMoraveji-Personal.vcf";
     const btn = document.getElementById("saveContactBtn");
     const statusEl = document.getElementById("vcfStatus");
