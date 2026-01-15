@@ -28,22 +28,64 @@
 
     h1 {
       font-size: 22px;
-      margin: 0 0 10px;
+      margin: 0 0 6px;
     }
 
     p {
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       color: #cfcfcf;
       line-height: 1.4;
     }
 
+    /* ===== CONTACT ACTIONS ===== */
+    .contact {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    a.action {
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 14px;
+      display: block;
+      font-weight: 800;
+      background: #ffffff;
+      color: #000000;
+      text-align: center;
+    }
+
+    a.action.secondary {
+      background: linear-gradient(135deg, #1f1f22, #2a2a2e);
+      color: #ffffff;
+      border: 2px solid #ffffff;
+      font-size: 17px;
+    }
+
+    .tiny {
+      font-size: 12px;
+      color: #a9a9a9;
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    /* ===== VIDEO ===== */
     .vid {
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid #222;
-      margin-bottom: 18px;
+      margin: 18px 0;
+      background:#000;
     }
 
+    .vid iframe{
+      width:100%;
+      aspect-ratio:16/9;
+      border:0;
+      display:block;
+    }
+
+    /* ===== STEPS ===== */
     .steps {
       display: grid;
       gap: 14px;
@@ -64,15 +106,7 @@
       background: linear-gradient(135deg, #1f1f22, #2a2a2e);
       color: #ffffff;
       border: 2px solid #ffffff;
-      font-weight: 800;
       font-size: 18px;
-    }
-
-    .tiny {
-      font-size: 12px;
-      color: #a9a9a9;
-      margin-top: 4px;
-      text-align: center;
     }
   </style>
 </head>
@@ -81,17 +115,48 @@
   <div class="wrap">
     <div class="card">
 
+      <!-- HEADER -->
+      <h1>James Elliott</h1>
+      <p>Client Executive · Verizon</p>
+
+      <!-- CONTACT ACTIONS -->
+      <div class="contact">
+
+        <!-- SAVE CONTACT -->
+        <a
+          class="action"
+          href="../assets/vcf/James-Elliott.vcf">
+          📇 Save Contact
+        </a>
+
+        <!-- CALL -->
+        <a
+          class="action secondary"
+          href="tel:+19372036689">
+          📞 Call James
+        </a>
+
+        <!-- EMAIL -->
+        <a
+          class="action secondary"
+          href="mailto:james.elliott@verizonwireless.com">
+          ✉️ Email James
+        </a>
+
+      </div>
+
+      <div class="tiny">
+        Save contact for easy follow-up.
+      </div>
+
       <!-- STEP 1 -->
-      <h1>Step 1: Watch how it works</h1>
+      <h1 style="margin-top:22px;">Step 1: Watch how it works</h1>
       <p>Quick demo → check your address → book a time.</p>
 
       <div class="vid">
         <iframe
-          width="100%"
-          height="380"
           src="https://www.youtube.com/embed/aYcTolNgWJs?rel=0&modestbranding=1&playsinline=1"
           title="Quick Demo"
-          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
