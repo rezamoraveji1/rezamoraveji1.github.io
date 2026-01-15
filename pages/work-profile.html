@@ -2,29 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Reza Moraveji — Contact</title>
+  <title>Reza Moraveji — Work Contact</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta property="og:title" content="Reza Moraveji — Contact" />
+  <meta property="og:title" content="Reza Moraveji — Work Contact" />
   <meta property="og:image" content="../assets/images/profile.jpg" />
 
   <style>
+    :root{
+      /* 🔴 MATCH PERSONAL PROFESSIONAL THEME */
+      --bg:#140506;
+      --card:#1f090c;
+      --panel:#1a070a;
+      --chip:#140506;
+      --btn:#6b1218;
+
+      --text:#f3e9ea;
+      --muted:#d8b6b9;
+      --border:rgba(255,255,255,.14);
+    }
+
+    *{box-sizing:border-box}
     body{
       margin:0;
       padding:22px 16px;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:#0b0f19;
-      color:#111;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
       text-align:center;
+      line-height:1.5;
     }
+    a{color:inherit;text-decoration:none}
 
     .card{
-      max-width:420px;
+      max-width:520px;
       margin:auto;
-      background:#f7f7f8;
-      border-radius:20px;
-      padding:22px 18px 18px;
-      box-shadow:0 18px 40px rgba(0,0,0,.45);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:20px 18px 18px;
+      box-shadow:0 18px 40px rgba(0,0,0,.55);
+      overflow:hidden;
     }
 
     .top{
@@ -37,24 +55,26 @@
     }
 
     .avatar{
-      width:64px;
-      height:64px;
-      border-radius:16px;
+      width:72px;
+      height:72px;
+      border-radius:18px;
       object-fit:cover;
-      background:#ddd;
+      border:1px solid var(--border);
+      background:#090304;
+      flex:0 0 auto;
     }
 
     h1{
       margin:0;
       font-size:22px;
       line-height:1.1;
-      color:#000;
+      color:var(--text);
     }
 
     p{
-      margin:4px 0 0;
+      margin:6px 0 0;
       font-size:14px;
-      color:#444;
+      color:var(--muted);
     }
 
     .btn{
@@ -66,43 +86,51 @@
       margin:10px 0;
       padding:14px;
       border-radius:14px;
-      font-weight:700;
-      font-size:16px;
-      text-decoration:none;
-      border:1px solid rgba(0,0,0,.10);
-      box-shadow:0 8px 18px rgba(0,0,0,.15);
+      font-weight:800;
+      font-size:15px;
+      border:1px solid var(--border);
+      background:var(--chip);
+      color:var(--text);
+      box-shadow:0 10px 22px rgba(0,0,0,.25);
+      cursor:pointer;
+      user-select:none;
     }
 
     .primary{
-      background:#000;
-      color:#fff;
-    }
-
-    .secondary{
-      background:#fff;
-      color:#111;
+      background:var(--btn);
+      border-color:rgba(255,120,120,.45);
     }
 
     .meta{
       margin-top:10px;
       font-size:12px;
-      color:#555;
+      color:var(--muted);
     }
 
-    /* ✅ YouTube embed */
+    /* YouTube embed */
     .video{
       margin:14px 0 8px;
       border-radius:16px;
       overflow:hidden;
-      box-shadow:0 10px 22px rgba(0,0,0,.18);
-      border:1px solid rgba(0,0,0,.10);
+      border:1px solid var(--border);
       background:#000;
+      box-shadow:0 14px 28px rgba(0,0,0,.35);
     }
     .video iframe{
       width:100%;
       aspect-ratio:16/9;
       border:0;
       display:block;
+    }
+
+    /* Verify CTA under video */
+    .verify{
+      margin:12px 0 6px;
+    }
+    .verify .label{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:6px;
     }
   </style>
 </head>
@@ -115,6 +143,7 @@
         src="../assets/images/profile.jpg"
         alt="Reza Moraveji"
         loading="eager"
+        decoding="async"
       />
       <div>
         <h1>Reza Moraveji</h1>
@@ -122,27 +151,35 @@
       </div>
     </div>
 
-    <!-- ✅ WORK vCard -->
+    <!-- WORK vCard -->
     <a class="btn primary" href="../assets/vcf/RezaMoraveji.vcf">
       📇 Save Contact
     </a>
 
-    <!-- ✅ WORK phone -->
-    <a class="btn secondary" href="tel:+17733323109">
+    <!-- WORK phone -->
+    <a class="btn" href="tel:+17733323109">
       📞 Call
     </a>
 
-    <!-- ✅ WORK email -->
-    <a class="btn secondary" href="mailto:reza.moraveji@verizonwireless.com">
+    <!-- WORK email -->
+    <a class="btn" href="mailto:reza.moraveji@verizonwireless.com">
       ✉️ Email
     </a>
 
     <!-- LinkedIn -->
-    <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">
+    <a class="btn" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">
       🔗 LinkedIn
     </a>
 
-    <!-- ✅ YouTube video embed -->
+    <!-- Verizon 5G Home Internet -->
+    <a class="btn primary"
+       href="https://www.verizon.com/home/internet/5g/"
+       target="_blank"
+       rel="noopener">
+      📡 Verizon 5G Home Internet
+    </a>
+
+    <!-- YouTube video -->
     <div class="video">
       <iframe
         src="https://www.youtube.com/embed/aYcTolNgWJs?rel=0&modestbranding=1&playsinline=1"
@@ -151,6 +188,17 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
+    </div>
+
+    <!-- Verify Your Address CTA -->
+    <div class="verify">
+      <div class="label">Check availability at your address</div>
+      <a class="btn primary"
+         href="https://www.verizon.com/home/internet/5g/"
+         target="_blank"
+         rel="noopener">
+        ✅ Verify Your Address
+      </a>
     </div>
 
     <div class="meta">
