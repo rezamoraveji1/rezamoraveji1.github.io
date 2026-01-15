@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Reza Moraveji — Choose Profile</title>
-  <meta name="description" content="Select Personal or Work profile" />
+  <meta name="description" content="Choose Personal or Work profile" />
 
   <meta property="og:title" content="Reza Moraveji — Choose Profile" />
   <meta property="og:description" content="Personal or Work profile" />
@@ -12,14 +12,16 @@
 
   <style>
     :root{
-      --bg:#0b0f19;
-      --card:#101a2f;
-      --panel:#0f172a;
-      --chip:#0b1324;
-      --btn:#162a55;
-      --text:#e9eefc;
-      --muted:#b9c4e2;
-      --border:rgba(255,255,255,.12);
+      /* 🔴 SAME RED THEME AS PERSONAL PROFESSIONAL PAGE */
+      --bg:#140506;
+      --card:#1f090c;
+      --panel:#1a070a;
+      --chip:#140506;
+      --btn:#6b1218;
+
+      --text:#f3e9ea;
+      --muted:#d8b6b9;
+      --border:rgba(255,255,255,.14);
     }
 
     *{box-sizing:border-box}
@@ -42,14 +44,17 @@
     }
 
     header{
-      padding:18px 20px 14px;
+      padding:20px;
       display:flex;
       gap:14px;
       align-items:center;
     }
     .avatar{
-      width:72px;height:72px;border-radius:18px;object-fit:cover;
-      border:1px solid var(--border);background:#0a1020;
+      width:76px;height:76px;
+      border-radius:18px;
+      object-fit:cover;
+      border:1px solid var(--border);
+      background:#090304;
       flex:0 0 auto;
     }
     .headtxt{min-width:0}
@@ -73,31 +78,64 @@
       padding:16px;
       display:grid;
       gap:12px;
-      min-height:160px;
+      min-height:170px;
     }
     .choice h2{
-      margin:0;
-      font-size:14px;
+      margin:0 0 2px;
+      font-size:13px;
       letter-spacing:.12em;
       text-transform:uppercase;
       color:var(--muted);
     }
-    .choice p{margin:0;color:var(--text);font-size:14px}
-    .pillrow{display:flex;flex-wrap:wrap;gap:8px}
-    .pill{
-      font-size:12px;padding:7px 10px;border-radius:999px;
-      border:1px solid var(--border);background:var(--chip);color:var(--muted);
+    .choice p{
+      margin:0;
+      font-size:14px;
+      color:var(--text);
     }
+
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .pill{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--chip);
+      color:var(--muted);
+    }
+
     .btn{
-      display:flex;align-items:center;justify-content:center;gap:10px;
-      padding:12px 14px;border-radius:14px;border:1px solid var(--border);
-      background:var(--chip);font-weight:750;font-size:14px;min-height:46px;
-      cursor:pointer;user-select:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:var(--chip);
+      font-weight:750;
+      font-size:14px;
+      min-height:46px;
+      cursor:pointer;
+      user-select:none;
       margin-top:4px;
     }
-    .btn.primary{background:var(--btn)}
-    .tiny{padding:0 20px 18px;color:var(--muted);font-size:12px}
+    .btn.primary{
+      background:var(--btn);
+      border-color:rgba(255,120,120,.45);
+    }
 
+    footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      padding:14px 20px 16px;
+      background:var(--card);
+      border-top:1px solid var(--border);
+    }
   </style>
 </head>
 
@@ -106,10 +144,16 @@
     <div class="card">
 
       <header>
-        <img class="avatar" src="../assets/images/profile.jpg" alt="Reza Moraveji" loading="eager" decoding="async" />
+        <img
+          class="avatar"
+          src="../assets/images/profile.jpg"
+          alt="Reza Moraveji"
+          loading="eager"
+          decoding="async"
+        />
         <div class="headtxt">
           <h1>Reza Moraveji</h1>
-          <div class="sub">Tap to choose your profile</div>
+          <div class="sub">Choose a profile</div>
         </div>
       </header>
 
@@ -119,32 +163,36 @@
         <!-- PERSONAL -->
         <div class="choice">
           <h2>Personal</h2>
-          <p>Personal landing that opens my professional profile.</p>
+          <p>My personal professional profile.</p>
           <div class="pillrow">
             <span class="pill">Resume</span>
             <span class="pill">Schedule</span>
             <span class="pill">PayPal</span>
           </div>
-          <!-- Update this href if your personal profile file name differs -->
-          <a class="btn primary" href="../index.html">✨ Open Personal Profile</a>
+          <a class="btn primary" href="./work-personal.html">
+            ✨ Open Personal Profile
+          </a>
         </div>
 
         <!-- WORK -->
         <div class="choice">
           <h2>Work</h2>
-          <p>Work profile with my work vCard and a short intro video.</p>
+          <p>My Verizon work contact profile.</p>
           <div class="pillrow">
             <span class="pill">Work vCard</span>
             <span class="pill">Call</span>
             <span class="pill">Email</span>
           </div>
-          <a class="btn primary" href="./work-profile.html">🏢 Open Work Profile</a>
+          <a class="btn primary" href="./work-profile.html">
+            🏢 Open Work Profile
+          </a>
         </div>
       </div>
 
-      <div class="tiny">
-        Tip: If you want this page to live at <strong>/pages/index.html</strong>, keep this file as <code>pages/index.html</code>.
-      </div>
+      <footer>
+        NFC-ready landing • Choose your profile
+      </footer>
+
     </div>
   </div>
 </body>
