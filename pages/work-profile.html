@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta property="og:title" content="Reza Moraveji — Contact" />
-  <meta property="og:image" content="/assets/images/profile.jpg" />
+  <meta property="og:image" content="../assets/images/profile.jpg" />
 
   <style>
     body{
@@ -88,6 +88,22 @@
       font-size:12px;
       color:#555;
     }
+
+    /* ✅ YouTube embed */
+    .video{
+      margin:14px 0 8px;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 10px 22px rgba(0,0,0,.18);
+      border:1px solid rgba(0,0,0,.10);
+      background:#000;
+    }
+    .video iframe{
+      width:100%;
+      aspect-ratio:16/9;
+      border:0;
+      display:block;
+    }
   </style>
 </head>
 
@@ -96,7 +112,7 @@
     <div class="top">
       <img
         class="avatar"
-        src="/assets/images/profile.jpg"
+        src="../assets/images/profile.jpg"
         alt="Reza Moraveji"
         loading="eager"
       />
@@ -107,7 +123,7 @@
     </div>
 
     <!-- ✅ WORK vCard -->
-    <a class="btn primary" href="/assets/vcf/RezaMoraveji.vcf">
+    <a class="btn primary" href="../assets/vcf/RezaMoraveji.vcf">
       📇 Save Contact
     </a>
 
@@ -122,9 +138,20 @@
     </a>
 
     <!-- LinkedIn -->
-    <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank">
+    <a class="btn secondary" href="https://www.linkedin.com/in/rezamoraveji/" target="_blank" rel="noopener">
       🔗 LinkedIn
     </a>
+
+    <!-- ✅ YouTube video embed -->
+    <div class="video">
+      <iframe
+        src="https://www.youtube.com/embed/aYcTolNgWJs?rel=0&modestbranding=1&playsinline=1"
+        title="YouTube video"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
 
     <div class="meta">
       Tap “Save Contact” to add me to your contacts.
