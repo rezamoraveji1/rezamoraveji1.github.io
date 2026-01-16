@@ -128,6 +128,32 @@
       border-color:rgba(255,120,120,.45);
     }
 
+    /* ===== Perspective Video ===== */
+    .perspective{
+      padding:18px 20px 22px;
+    }
+    .perspective h2{
+      margin:0 0 10px;
+      font-size:13px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      text-align:center;
+    }
+    .video{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:#000;
+      box-shadow:0 14px 28px rgba(0,0,0,.35);
+    }
+    .video iframe{
+      width:100%;
+      aspect-ratio:16/9;
+      border:0;
+      display:block;
+    }
+
     footer{
       text-align:center;
       color:var(--muted);
@@ -169,7 +195,7 @@
             <span class="pill">Schedule</span>
             <span class="pill">PayPal</span>
           </div>
-          <a class="btn primary" href="./index.html">
+          <a class="btn primary" href="../index.html">
             ✨ Open Personal Profile
           </a>
         </div>
@@ -189,20 +215,22 @@
         </div>
       </div>
 
- <h1 style="margin-top:22px;">Step 1: Watch how it works</h1>
-      <p>Quick demo → check your address → book a time.</p>
+      <!-- ===== Perspective Section (BOTTOM) ===== -->
+      <div class="perspective">
+        <h2>Perspective</h2>
+        <div class="video">
+          <iframe
+            src="https://www.youtube.com/embed/ZU0f8_C5Pm0?rel=0&modestbranding=1&playsinline=1"
+            title="Perspective"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
 
-      <div class="vid">
-        <iframe
-          src="https://www.youtube.com/watch?v=ZU0f8_C5Pm0"
-          title="Perspective"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>      
-      
       <footer>
-        "The question isn't who is going to let me; it's who is going to stop me."
+        "The question isn't who is going to let me; it's who is going to stop me!"
       </footer>
 
     </div>
