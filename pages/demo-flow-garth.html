@@ -38,17 +38,18 @@
     }
 
     .avatar {
-      width: 70px;
-      height: 70px;
+      width: 74px;
+      height: 74px;
       border-radius: 14px;
       object-fit: cover;
       border: 1px solid rgba(255,255,255,.25);
       background: #090304;
+      flex: 0 0 auto;
     }
 
     h1 {
       font-size: 22px;
-      margin: 0;
+      margin: 0 0 6px;
     }
 
     .sub {
@@ -70,6 +71,7 @@
       margin-bottom: 18px;
     }
 
+    button.action,
     a.action {
       text-decoration: none;
       padding: 16px;
@@ -80,6 +82,11 @@
       background: #ffffff;
       color: #000000;
       text-align: center;
+
+      border: 0;
+      width: 100%;
+      cursor: pointer;
+      font-size: 16px;
     }
 
     a.action.secondary {
@@ -145,8 +152,14 @@
 
       <!-- HEADER -->
       <div class="header">
-       <img class="avatar" src="assets/images/Garth.jpg" alt="Garth Gist" />
-
+        <img
+          class="avatar"
+          id="avatar"
+          src=""
+          alt="Garth Gist"
+          loading="eager"
+          decoding="async"
+        />
         <div>
           <h1>Garth Gist</h1>
           <div class="sub">Client Executive · Verizon</div>
@@ -161,24 +174,25 @@
       <!-- CONTACT ACTIONS -->
       <div class="contact">
 
-        <!-- SAVE CONTACT -->
-        <a class="action" href="assets/vcf/GarthGist.vcf">📇 Save Contact</a>
-
+        <!-- SAVE CONTACT (robust download) -->
+        <button class="action" id="saveContactBtn">
+          📇 Save Contact
+        </button>
 
         <!-- CALL -->
         <a class="action secondary" href="tel:+17653463909">
           📞 Call
         </a>
 
-        <!-- EMAIL -->
+        <!-- EMAIL (using exactly what you provided) -->
         <a class="action secondary" href="mailto:garth.gist@verizonwirlees.com">
           ✉️ Email
         </a>
 
       </div>
 
-      <div class="tiny">
-        Save my contact for easy follow-up.
+      <div class="tiny" id="statusText">
+        Save contact for easy follow-up.
       </div>
 
       <!-- STEP 1 -->
@@ -207,7 +221,7 @@
         </a>
 
         <div class="tiny">
-          After checking your address, return here to continue.
+          After checking your address, return to this tab to continue.
         </div>
 
         <!-- STEP 3 -->
@@ -216,9 +230,8 @@
           href="https://calendar.google.com/calendar/u/0?cid=Y19lMDc2OTJmNTJhMjlhYTI5N2JkYjI4NTQ5YjA3NDNiM2I1YWExYmZkZTkwNWUyZmMxZDBlZThlNTcxZGY0NmE1QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
           target="_blank"
           rel="noopener">
-          📅 Step 3: Schedule an Appointment
+          📅 Step 3: Schedule an appointment
         </a>
-
       </div>
 
       <div class="tiny" style="margin-top:16px;">
@@ -227,5 +240,74 @@
 
     </div>
   </div>
+
+  <script>
+    // ---- Robust asset loading (works whether this HTML is in root or a subfolder) ----
+    const assetPrefixes = ["assets/", "../assets/", "../../assets/"];
+
+    function setImageWithFallback(imgEl, relativePath) {
+      let i = 0;
+
+      const tryNext = () => {
+        if (i >= assetPrefixes.length) {
+          // If nothing works, leave blank (but keep layout)
+          return;
+        }
+        const candidate = assetPrefixes[i] + relativePath;
+        i++;
+
+        const testImg = new Image();
+        testImg.onload = () => { imgEl.src = candidate; };
+        testImg.onerror = tryNext;
+        testImg.src = candidate;
+      };
+
+      tryNext();
+    }
+
+    async function fetchWithFallback(relativePath) {
+      for (const prefix of assetPrefixes) {
+        const url = prefix + relativePath;
+        try {
+          const res = await fetch(url, { cache: "no-store" });
+          if (res.ok) return { res, url };
+        } catch (_) {}
+      }
+      throw new Error("Asset not found in expected paths.");
+    }
+
+    // Image: assets/images/Garth.jpg
+    const avatarEl = document.getElementById("avatar");
+    setImageWithFallback(avatarEl, "images/Garth.jpg");
+
+    // vCard: assets/vcf/GarthGist.vcf
+    const btn = document.getElementById("saveContactBtn");
+    const statusEl = document.getElementById("statusText");
+
+    btn.addEventListener("click", async () => {
+      statusEl.textContent = "Preparing contact download…";
+      try {
+        const { res, url } = await fetchWithFallback("vcf/GarthGist.vcf");
+        const text = await res.text();
+
+        const blob = new Blob([text], { type: "text/vcard;charset=utf-8" });
+        const blobUrl = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = blobUrl;
+        a.download = "GarthGist.vcf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
+        statusEl.textContent = "If prompted, choose “Add to Contacts”.";
+      } catch (e) {
+        statusEl.textContent = "Couldn’t download — opening the vCard…";
+        // As a last resort, open the first likely path
+        window.location.href = "assets/vcf/GarthGist.vcf";
+      }
+    });
+  </script>
 </body>
 </html>
