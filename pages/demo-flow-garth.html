@@ -9,8 +9,6 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial;
       margin: 0;
-
-      /* 🔴 Red Theme */
       background: #140506;
       color: #ffffff;
     }
@@ -49,7 +47,7 @@
 
     h1 {
       font-size: 22px;
-      margin: 0 0 6px;
+      margin: 0 0 4px;
     }
 
     .sub {
@@ -71,22 +69,32 @@
       margin-bottom: 18px;
     }
 
+    /* ✅ NORMALIZED BUTTON + LINK SIZE */
     button.action,
     a.action {
+      appearance: none;
+      -webkit-appearance: none;
+      box-sizing: border-box;
+
       text-decoration: none;
-      padding: 16px;
+      padding: 0 16px;
       border-radius: 14px;
-      display: block;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       font-weight: 800;
+      font-size: 16px;
+
+      height: 56px;        /* forces equal height */
+      width: 100%;
 
       background: #ffffff;
       color: #000000;
-      text-align: center;
 
       border: 0;
-      width: 100%;
       cursor: pointer;
-      font-size: 16px;
     }
 
     a.action.secondary {
@@ -94,6 +102,13 @@
       color: #ffffff;
       border: 2px solid rgba(255,255,255,.4);
       font-size: 17px;
+    }
+
+    /* Tap feedback */
+    button.action:active,
+    a.action:active {
+      transform: scale(0.985);
+      opacity: 0.9;
     }
 
     .tiny {
@@ -154,12 +169,11 @@
       <div class="header">
         <img
           class="avatar"
-          id="avatar"
-          src=""
+          src="assets/images/Garth.jpg"
           alt="Garth Gist"
           loading="eager"
-          decoding="async"
         />
+
         <div>
           <h1>Garth Gist</h1>
           <div class="sub">Client Executive · Verizon</div>
@@ -174,7 +188,7 @@
       <!-- CONTACT ACTIONS -->
       <div class="contact">
 
-        <!-- SAVE CONTACT (robust download) -->
+        <!-- SAVE CONTACT -->
         <button class="action" id="saveContactBtn">
           📇 Save Contact
         </button>
@@ -184,7 +198,7 @@
           📞 Call
         </a>
 
-        <!-- EMAIL (using exactly what you provided) -->
+        <!-- EMAIL -->
         <a class="action secondary" href="mailto:garth.gist@verizonwirlees.com">
           ✉️ Email
         </a>
@@ -203,7 +217,6 @@
         <iframe
           src="https://www.youtube.com/embed/aYcTolNgWJs?rel=0&modestbranding=1&playsinline=1"
           title="Quick Demo"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
       </div>
@@ -221,7 +234,7 @@
         </a>
 
         <div class="tiny">
-          After checking your address, return to this tab to continue.
+          After checking your address, return here to continue.
         </div>
 
         <!-- STEP 3 -->
@@ -230,8 +243,9 @@
           href="https://calendar.google.com/calendar/u/0?cid=Y19lMDc2OTJmNTJhMjlhYTI5N2JkYjI4NTQ5YjA3NDNiM2I1YWExYmZkZTkwNWUyZmMxZDBlZThlNTcxZGY0NmE1QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
           target="_blank"
           rel="noopener">
-          📅 Step 3: Schedule an appointment
+          📅 Step 3: Schedule an Appointment
         </a>
+
       </div>
 
       <div class="tiny" style="margin-top:16px;">
@@ -242,70 +256,40 @@
   </div>
 
   <script>
-    // ---- Robust asset loading (works whether this HTML is in root or a subfolder) ----
-    const assetPrefixes = ["assets/", "../assets/", "../../assets/"];
+    /* ===== vCard Download ===== */
 
-    function setImageWithFallback(imgEl, relativePath) {
-      let i = 0;
-
-      const tryNext = () => {
-        if (i >= assetPrefixes.length) {
-          // If nothing works, leave blank (but keep layout)
-          return;
-        }
-        const candidate = assetPrefixes[i] + relativePath;
-        i++;
-
-        const testImg = new Image();
-        testImg.onload = () => { imgEl.src = candidate; };
-        testImg.onerror = tryNext;
-        testImg.src = candidate;
-      };
-
-      tryNext();
-    }
-
-    async function fetchWithFallback(relativePath) {
-      for (const prefix of assetPrefixes) {
-        const url = prefix + relativePath;
-        try {
-          const res = await fetch(url, { cache: "no-store" });
-          if (res.ok) return { res, url };
-        } catch (_) {}
-      }
-      throw new Error("Asset not found in expected paths.");
-    }
-
-    // Image: assets/images/Garth.jpg
-    const avatarEl = document.getElementById("avatar");
-    setImageWithFallback(avatarEl, "images/Garth.jpg");
-
-    // vCard: assets/vcf/GarthGist.vcf
+    const vcfUrl = "assets/vcf/GarthGist.vcf";
     const btn = document.getElementById("saveContactBtn");
     const statusEl = document.getElementById("statusText");
 
     btn.addEventListener("click", async () => {
-      statusEl.textContent = "Preparing contact download…";
-      try {
-        const { res, url } = await fetchWithFallback("vcf/GarthGist.vcf");
-        const text = await res.text();
+      statusEl.textContent = "Preparing contact…";
 
-        const blob = new Blob([text], { type: "text/vcard;charset=utf-8" });
-        const blobUrl = URL.createObjectURL(blob);
+      try {
+        const res = await fetch(vcfUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error();
+
+        const text = await res.text();
+        const blob = new Blob([text], {
+          type: "text/vcard;charset=utf-8"
+        });
+
+        const url = URL.createObjectURL(blob);
 
         const a = document.createElement("a");
-        a.href = blobUrl;
+        a.href = url;
         a.download = "GarthGist.vcf";
         document.body.appendChild(a);
         a.click();
         a.remove();
 
-        setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+
         statusEl.textContent = "If prompted, choose “Add to Contacts”.";
-      } catch (e) {
-        statusEl.textContent = "Couldn’t download — opening the vCard…";
-        // As a last resort, open the first likely path
-        window.location.href = "assets/vcf/GarthGist.vcf";
+      }
+      catch {
+        statusEl.textContent = "Opening contact file…";
+        window.location.href = vcfUrl;
       }
     });
   </script>
