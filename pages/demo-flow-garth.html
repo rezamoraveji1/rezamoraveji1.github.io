@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Garth Gist | Verizon</title>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial;
+      margin: 0;
+
+      /* 🔴 Red Theme */
+      background: #140506;
+      color: #ffffff;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: #1f090c;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.6);
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.25);
+      background: #090304;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .sub {
+      font-size: 13px;
+      color: #e2bcbc;
+      margin-top: 2px;
+    }
+
+    p {
+      margin: 6px 0 14px;
+      color: #e2bcbc;
+      line-height: 1.4;
+    }
+
+    /* ===== CONTACT ACTIONS ===== */
+    .contact {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    a.action {
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 14px;
+      display: block;
+      font-weight: 800;
+
+      background: #ffffff;
+      color: #000000;
+      text-align: center;
+    }
+
+    a.action.secondary {
+      background: linear-gradient(135deg, #5b1218, #7a1b22);
+      color: #ffffff;
+      border: 2px solid rgba(255,255,255,.4);
+      font-size: 17px;
+    }
+
+    .tiny {
+      font-size: 12px;
+      color: #d2a3a6;
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    /* ===== VIDEO ===== */
+    .vid {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.15);
+      margin: 18px 0;
+      background:#090304;
+    }
+
+    .vid iframe{
+      width:100%;
+      aspect-ratio:16/9;
+      border:0;
+      display:block;
+    }
+
+    /* ===== STEPS ===== */
+    .steps {
+      display: grid;
+      gap: 14px;
+    }
+
+    a.step {
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 14px;
+      display: block;
+      font-weight: 800;
+
+      background: #ffffff;
+      color: #000000;
+      text-align: center;
+    }
+
+    a.step.secondary {
+      background: linear-gradient(135deg, #5b1218, #7a1b22);
+      color: #ffffff;
+      border: 2px solid rgba(255,255,255,.4);
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+
+      <!-- HEADER -->
+      <div class="header">
+        <img class="avatar" src="Garth.jpg" alt="Garth Gist" />
+
+        <div>
+          <h1>Garth Gist</h1>
+          <div class="sub">Client Executive · Verizon</div>
+          <div class="sub">Indianapolis Market</div>
+        </div>
+      </div>
+
+      <p>
+        Helping residents in the Indianapolis area get fast, reliable Verizon home internet.
+      </p>
+
+      <!-- CONTACT ACTIONS -->
+      <div class="contact">
+
+        <!-- SAVE CONTACT -->
+        <a class="action" href="GarthGist.vcf">
+          📇 Save Contact
+        </a>
+
+        <!-- CALL -->
+        <a class="action secondary" href="tel:+17653463909">
+          📞 Call
+        </a>
+
+        <!-- EMAIL -->
+        <a class="action secondary" href="mailto:garth.gist@verizonwirlees.com">
+          ✉️ Email
+        </a>
+
+      </div>
+
+      <div class="tiny">
+        Save my contact for easy follow-up.
+      </div>
+
+      <!-- STEP 1 -->
+      <h1 style="margin-top:22px;">Step 1: Watch how it works</h1>
+      <p>Quick demo → check your address → book a time.</p>
+
+      <div class="vid">
+        <iframe
+          src="https://www.youtube.com/embed/aYcTolNgWJs?rel=0&modestbranding=1&playsinline=1"
+          title="Quick Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- STEP 2 + STEP 3 -->
+      <div class="steps">
+
+        <!-- STEP 2 -->
+        <a
+          class="step"
+          href="https://www.verizon.com/home/internet/5g/"
+          target="_blank"
+          rel="noopener">
+          Step 2: Verify your address
+        </a>
+
+        <div class="tiny">
+          After checking your address, return here to continue.
+        </div>
+
+        <!-- STEP 3 -->
+        <a
+          class="step secondary"
+          href="https://calendar.google.com/calendar/u/0?cid=Y19lMDc2OTJmNTJhMjlhYTI5N2JkYjI4NTQ5YjA3NDNiM2I1YWExYmZkZTkwNWUyZmMxZDBlZThlNTcxZGY0NmE1QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+          target="_blank"
+          rel="noopener">
+          📅 Step 3: Schedule an Appointment
+        </a>
+
+      </div>
+
+      <div class="tiny" style="margin-top:16px;">
+        This takes less than a minute from start to finish.
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
