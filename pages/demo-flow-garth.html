@@ -69,7 +69,7 @@
       margin-bottom: 18px;
     }
 
-    /* ✅ NORMALIZED BUTTON + LINK SIZE */
+    /* ✅ SAME SIZE FOR BUTTON + LINK (iOS-safe) */
     button.action,
     a.action {
       appearance: none;
@@ -87,7 +87,7 @@
       font-weight: 800;
       font-size: 16px;
 
-      height: 56px;        /* forces equal height */
+      height: 56px;   /* forces equal height */
       width: 100%;
 
       background: #ffffff;
@@ -104,7 +104,6 @@
       font-size: 17px;
     }
 
-    /* Tap feedback */
     button.action:active,
     a.action:active {
       transform: scale(0.985);
@@ -146,7 +145,6 @@
       border-radius: 14px;
       display: block;
       font-weight: 800;
-
       background: #ffffff;
       color: #000000;
       text-align: center;
@@ -169,9 +167,11 @@
       <div class="header">
         <img
           class="avatar"
-          src="assets/images/Garth.jpg"
+          id="avatar"
+          src=""
           alt="Garth Gist"
           loading="eager"
+          decoding="async"
         />
 
         <div>
@@ -198,7 +198,7 @@
           📞 Call
         </a>
 
-        <!-- EMAIL -->
+        <!-- EMAIL (kept exactly as you provided) -->
         <a class="action secondary" href="mailto:garth.gist@verizonwirlees.com">
           ✉️ Email
         </a>
@@ -217,6 +217,7 @@
         <iframe
           src="https://www.youtube.com/embed/aYcTolNgWJs?rel=0&modestbranding=1&playsinline=1"
           title="Quick Demo"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
       </div>
@@ -256,40 +257,65 @@
   </div>
 
   <script>
-    /* ===== vCard Download ===== */
+    // Works whether this HTML file is in root or in a subfolder
+    const assetPrefixes = ["assets/", "../assets/", "../../assets/"];
 
-    const vcfUrl = "assets/vcf/GarthGist.vcf";
+    function setImageWithFallback(imgEl, relativePath) {
+      let i = 0;
+      const tryNext = () => {
+        if (i >= assetPrefixes.length) return;
+        const candidate = assetPrefixes[i] + relativePath;
+        i++;
+
+        const testImg = new Image();
+        testImg.onload = () => { imgEl.src = candidate; };
+        testImg.onerror = tryNext;
+        testImg.src = candidate;
+      };
+      tryNext();
+    }
+
+    async function fetchWithFallback(relativePath) {
+      for (const prefix of assetPrefixes) {
+        const url = prefix + relativePath;
+        try {
+          const res = await fetch(url, { cache: "no-store" });
+          if (res.ok) return { res, url };
+        } catch (_) {}
+      }
+      throw new Error("Asset not found.");
+    }
+
+    // ✅ Image: /assets/images/Garth.jpg
+    const avatarEl = document.getElementById("avatar");
+    setImageWithFallback(avatarEl, "images/Garth.jpg");
+
+    // ✅ vCard: /assets/vcf/GarthGist.vcf
     const btn = document.getElementById("saveContactBtn");
     const statusEl = document.getElementById("statusText");
 
     btn.addEventListener("click", async () => {
       statusEl.textContent = "Preparing contact…";
-
       try {
-        const res = await fetch(vcfUrl, { cache: "no-store" });
-        if (!res.ok) throw new Error();
-
+        const { res } = await fetchWithFallback("vcf/GarthGist.vcf");
         const text = await res.text();
-        const blob = new Blob([text], {
-          type: "text/vcard;charset=utf-8"
-        });
 
-        const url = URL.createObjectURL(blob);
+        const blob = new Blob([text], { type: "text/vcard;charset=utf-8" });
+        const blobUrl = URL.createObjectURL(blob);
 
         const a = document.createElement("a");
-        a.href = url;
+        a.href = blobUrl;
         a.download = "GarthGist.vcf";
         document.body.appendChild(a);
         a.click();
         a.remove();
 
-        setTimeout(() => URL.revokeObjectURL(url), 2000);
-
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
         statusEl.textContent = "If prompted, choose “Add to Contacts”.";
-      }
-      catch {
+      } catch (e) {
         statusEl.textContent = "Opening contact file…";
-        window.location.href = vcfUrl;
+        // Last resort: open most common path (may still work depending on folder depth)
+        window.location.href = "assets/vcf/GarthGist.vcf";
       }
     });
   </script>
